@@ -110,13 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/gameboard.js":
+/*!**************************!*\
+  !*** ./src/gameboard.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ gameboard)\n/* harmony export */ });\n/* harmony import */ var _ship__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ship */ \"./src/ship.js\");\n\n\n\nclass gameboard {\n  createShip(size, x, y) {\n    _ship__WEBPACK_IMPORTED_MODULE_0__.ships.push(new _ship__WEBPACK_IMPORTED_MODULE_0__[\"default\"](size, 0, x, y));\n  }\n\n  recieveAttack() {\n    console.log(_ship__WEBPACK_IMPORTED_MODULE_0__.ships[0].xCoord);\n    console.log(_ship__WEBPACK_IMPORTED_MODULE_0__.ships[1].xCoord);\n  }\n}\n\n\n//# sourceURL=webpack://weather-app/./src/gameboard.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/styles.css */ \"./src/styles/styles.css\");\n\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/styles.css */ \"./src/styles/styles.css\");\n/* harmony import */ var _ship__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ship */ \"./src/ship.js\");\n/* harmony import */ var _gameboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gameboard */ \"./src/gameboard.js\");\n\n\n\n\nlet gameboard1 = new _gameboard__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\ngameboard1.createShip(4, 5, 9);\ngameboard1.createShip(3, 2, 8);\n\ngameboard1.recieveAttack();\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/ship.js":
+/*!*********************!*\
+  !*** ./src/ship.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ ship),\n/* harmony export */   ships: () => (/* binding */ ships)\n/* harmony export */ });\nclass ship {\n  constructor(size, hits, xCoord, yCoord) {\n    this.size = size;\n    this.hits = hits;\n    this.xCoord = xCoord;\n    this.yCoord = yCoord;\n  }\n\n  hit() {\n    return this.hits++;\n  }\n\n  isSunk() {\n    if (this.hits == this.size) {\n      return true;\n    } else return false;\n  }\n}\n\nconst ships = [];\n\n\n//# sourceURL=webpack://weather-app/./src/ship.js?");
 
 /***/ })
 
