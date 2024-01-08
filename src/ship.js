@@ -1,9 +1,8 @@
 export default class ship {
-  constructor(size, hits, xCoord, yCoord) {
+  constructor(size, hits, coords) {
     this.size = size;
     this.hits = hits;
-    this.xCoord = xCoord;
-    this.yCoord = yCoord;
+    this.coords = coords;
   }
 
   hit() {
