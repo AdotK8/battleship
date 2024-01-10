@@ -24,3 +24,5 @@ let attackCoords2 = [4, 3];
 gameboard1.createShip(4, coords);
 gameboard1.createShip(4, coords2);
 gameboard1.recieveAttack(attackCoords);
+
+console.log(gameboard1.misses);
