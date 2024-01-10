@@ -1,7 +1,7 @@
 export default class ship {
-  constructor(size, hits, coords) {
+  constructor(size, coords) {
     this.size = size;
-    this.hits = hits;
+    this.hits = 0;
     this.coords = coords;
   }
 
@@ -12,7 +12,6 @@ export default class ship {
 
   isSunk() {
     if (this.hits == this.size) {
-      console.log("this ship is sunk");
       return true;
     } else return false;
   }
