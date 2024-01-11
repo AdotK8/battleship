@@ -22,9 +22,19 @@ let attackCoords2 = [5, 6];
 let attackCoords3 = [5, 7];
 let attackCoords4 = [5, 8];
 
+let attackCoords5 = [4, 1];
+let attackCoords6 = [4, 2];
+let attackCoords7 = [4, 3];
+let attackCoords8 = [4, 4];
+
 gameboard1.createShip(4, coords);
 gameboard1.createShip(4, coords2);
+
 gameboard1.recieveAttack(attackCoords1);
 gameboard1.recieveAttack(attackCoords2);
 gameboard1.recieveAttack(attackCoords3);
-gameboard1.recieveAttack(attackCoords4);
+
+gameboard1.recieveAttack(attackCoords5);
+gameboard1.recieveAttack(attackCoords6);
+
+console.log(gameboard1.ships[1].hits);

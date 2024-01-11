@@ -4,6 +4,7 @@ export default class gameboard {
   constructor() {
     this.misses = {};
     this.ships = [];
+    this.sunkenShips = 0;
   }
   createShip(size, coords) {
     this.ships.push(new ship(size, coords));
@@ -16,7 +17,9 @@ export default class gameboard {
       for (let j = 0; j <= this.ships[i].size - 1; j++) {
         if (attackCoords.toString() == this.ships[i].coords[j].toString()) {
           this.ships[i].hit();
-          this.ships[i].isSunk();
+          if (this.ships[i].isSunk()) {
+            this.sunkenShips++;
+          }
         }
       }
     }
@@ -39,11 +42,12 @@ export default class gameboard {
     for (let i = 0; i < 64; i++) {
       if (!this.misses[i]) {
         this.misses[i] = attackCoords;
-
         return;
       }
     }
   }
 
-  checkIfAllShipsSunk() {}
+  checkWinner() {
+    return this.sunkenShips === this.ships.length;
+  }
 }
