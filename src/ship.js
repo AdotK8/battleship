@@ -3,6 +3,7 @@ export default class ship {
     this.size = size;
     this.hits = 0;
     this.coords = coords;
+    this.sunk = false;
   }
 
   hit() {
@@ -12,9 +13,8 @@ export default class ship {
 
   isSunk() {
     if (this.hits == this.size) {
+      this.sunk = true;
       return true;
     } else return false;
   }
 }
-
-export const ships = [];

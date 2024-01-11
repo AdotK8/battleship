@@ -1,39 +1,36 @@
 import ship from "./ship";
-import { ships } from "./ship";
 
 export default class gameboard {
   constructor() {
     this.misses = {};
+    this.ships = [];
   }
   createShip(size, coords) {
-    ships.push(new ship(size, coords));
+    this.ships.push(new ship(size, coords));
   }
 
   recieveAttack(attackCoords) {
     let preHits = this.getTotalHits();
 
-    for (let i = 0; i <= ships.length - 1; i++) {
-      for (let j = 0; j <= ships[i].size - 1; j++) {
-        if (attackCoords.toString() == ships[i].coords[j].toString()) {
-          ships[i].hit();
-          ships[i].isSunk();
+    for (let i = 0; i <= this.ships.length - 1; i++) {
+      for (let j = 0; j <= this.ships[i].size - 1; j++) {
+        if (attackCoords.toString() == this.ships[i].coords[j].toString()) {
+          this.ships[i].hit();
+          this.ships[i].isSunk();
         }
       }
     }
-
     let postHits = this.getTotalHits();
 
     if (preHits == postHits) {
       this.logMisses(attackCoords);
-    } else {
-      console.log("thats a hit baby");
-    }
+    } else return;
   }
 
   getTotalHits() {
     let tempHits = 0;
-    for (let i = 0; i <= ships.length - 1; i++) {
-      tempHits = tempHits + ships[i].hits;
+    for (let i = 0; i < this.ships.length; i++) {
+      tempHits = tempHits + this.ships[i].hits;
     }
     return tempHits;
   }
@@ -42,8 +39,11 @@ export default class gameboard {
     for (let i = 0; i < 64; i++) {
       if (!this.misses[i]) {
         this.misses[i] = attackCoords;
+
         return;
       }
     }
   }
+
+  checkIfAllShipsSunk() {}
 }

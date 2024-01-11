@@ -1,5 +1,4 @@
 import "./styles/styles.css";
-import { ships } from "./ship";
 import gameboard from "./gameboard";
 
 let gameboard1 = new gameboard();
@@ -18,11 +17,14 @@ let coords2 = {
   3: [4, 4],
 };
 
-let attackCoords = [5, 5];
-let attackCoords2 = [4, 3];
+let attackCoords1 = [5, 5];
+let attackCoords2 = [5, 6];
+let attackCoords3 = [5, 7];
+let attackCoords4 = [5, 8];
 
 gameboard1.createShip(4, coords);
 gameboard1.createShip(4, coords2);
-gameboard1.recieveAttack(attackCoords);
-
-console.log(gameboard1.misses);
+gameboard1.recieveAttack(attackCoords1);
+gameboard1.recieveAttack(attackCoords2);
+gameboard1.recieveAttack(attackCoords3);
+gameboard1.recieveAttack(attackCoords4);
