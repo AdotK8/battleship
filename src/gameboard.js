@@ -3,6 +3,7 @@ import ship from "./ship";
 export default class gameboard {
   constructor() {
     this.misses = {};
+    this.attacks = {};
     this.ships = [];
     this.sunkenShips = 0;
   }
@@ -11,6 +12,7 @@ export default class gameboard {
   }
 
   recieveAttack(attackCoords) {
+    this.logAttacks(attackCoords);
     let preHits = this.getTotalHits();
 
     for (let i = 0; i <= this.ships.length - 1; i++) {
@@ -42,6 +44,15 @@ export default class gameboard {
     for (let i = 0; i < 64; i++) {
       if (!this.misses[i]) {
         this.misses[i] = attackCoords;
+        return;
+      }
+    }
+  }
+
+  logAttacks(attackCoords) {
+    for (let i = 0; i < 64; i++) {
+      if (!this.attacks[i]) {
+        this.attacks[i] = attackCoords;
         return;
       }
     }

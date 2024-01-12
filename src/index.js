@@ -1,5 +1,6 @@
 import "./styles/styles.css";
 import gameboard from "./gameboard";
+import player from "./player";
 
 let gameboard1 = new gameboard();
 

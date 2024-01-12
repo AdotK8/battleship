@@ -1,7 +1,7 @@
-import ship from "./ship";
 import gameboard from "./gameboard";
+import player from "./player";
 
-let gameboard1 = new gameboard();
+let player1 = new player("ahmed");
 
 let coords = {
   0: [5, 5],
@@ -29,35 +29,39 @@ let attackCoords8 = [4, 4];
 
 let missedShot = [6, 8];
 
-gameboard1.createShip(4, coords);
-gameboard1.createShip(4, coords2);
+player1.gameboard.createShip(4, coords);
+player1.gameboard.createShip(4, coords2);
 
-gameboard1.recieveAttack(attackCoords1);
-gameboard1.recieveAttack(attackCoords2);
-gameboard1.recieveAttack(attackCoords3);
-gameboard1.recieveAttack(attackCoords4);
+player1.gameboard.recieveAttack(attackCoords1);
+player1.gameboard.recieveAttack(attackCoords2);
+player1.gameboard.recieveAttack(attackCoords3);
+player1.gameboard.recieveAttack(attackCoords4);
 
 test("ship should be sunk", function () {
-  expect(gameboard1.ships[0].isSunk()).toBe(true);
+  expect(player1.gameboard.ships[0].isSunk()).toBe(true);
 });
 
 test("miss is being logged", function () {
-  gameboard1.recieveAttack(missedShot);
-  expect(gameboard1.misses[0]).toBe(missedShot);
+  player1.gameboard.recieveAttack(missedShot);
+  expect(player1.gameboard.misses[0]).toBe(missedShot);
+});
+
+test("all attacks are being logged", function () {
+  expect(player1.gameboard.attacks[4]).toBe(missedShot);
 });
 
 test("total hits is being logged", function () {
-  expect(gameboard1.ships[0].hits).toBe(4);
+  expect(player1.gameboard.ships[0].hits).toBe(4);
 });
 
 test("losing works", function () {
-  expect(gameboard1.checkWinner()).toBe(false);
+  expect(player1.gameboard.checkWinner()).toBe(false);
 });
 
 test("winning works", function () {
-  gameboard1.recieveAttack(attackCoords5);
-  gameboard1.recieveAttack(attackCoords6);
-  gameboard1.recieveAttack(attackCoords7);
-  gameboard1.recieveAttack(attackCoords8);
-  expect(gameboard1.checkWinner()).toBe(true);
+  player1.gameboard.recieveAttack(attackCoords5);
+  player1.gameboard.recieveAttack(attackCoords6);
+  player1.gameboard.recieveAttack(attackCoords7);
+  player1.gameboard.recieveAttack(attackCoords8);
+  expect(player1.gameboard.checkWinner()).toBe(true);
 });
