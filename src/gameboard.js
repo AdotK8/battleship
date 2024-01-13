@@ -12,13 +12,6 @@ export default class gameboard {
     this.ships.push(new ship(size, coords));
   }
 
-  getRandomCoords() {
-    let rndInt = Math.floor(Math.random() * 8) + 1;
-    let rndInt2 = Math.floor(Math.random() * 8) + 1;
-    let array = [rndInt, rndInt2];
-    return array;
-  }
-
   recieveAttack(attackCoords) {
     this.logAttacks(attackCoords);
     let preHits = this.getTotalHits();

@@ -20,10 +20,10 @@ export default class player {
 
     if (isValid == false) {
       this.sendRandomAttack();
-    } else if (isValid == true) {
-      console.log(temp);
+    } else {
       this.gameboard.recieveAttack(temp);
-      return temp;
+      console.log(temp);
+      return;
     }
   }
 
