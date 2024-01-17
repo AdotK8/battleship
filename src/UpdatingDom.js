@@ -1,16 +1,32 @@
-export function displayBoards() {
-  const container1 = document.querySelector(".container1");
-  const container2 = document.querySelector(".container2");
+import player from "./player";
+import gameboard from "./gameboard";
 
-  for (let i = 0; i < 8; i++) {
-    let newRow = document.createElement("div");
-    newRow.classList.add("row");
-    container1.appendChild(newRow);
+export function displayBoard(container) {
+  for (let i = 1; i <= 8; i++) {
+    let newRow = document.createElement(`div`);
+    newRow.classList.add("tile");
+    newRow.dataset.x = i;
+    newRow.dataset.y = 1;
+    container.appendChild(newRow);
 
-    for (let j = 0; j < 7; j++) {
+    for (let j = 1; j <= 7; j++) {
       let newTile = document.createElement("div");
       newTile.classList.add("tile");
-      container1.appendChild(newTile);
+      newTile.dataset.x = i;
+      newTile.dataset.y = j + 1;
+      container.appendChild(newTile);
+    }
+  }
+}
+
+export function displayShips(player) {
+  for (let i = 0; i < player.gameboard.ships.length; i++) {
+    for (let j = 0; j < player.gameboard.ships[i].size; j++) {
+      console.log(player.gameboard.ships[i].coords[j]);
+      let shipTile = document.querySelector(
+        `[data-x="${player.gameboard.ships[i].coords[j][0]}"][data-y="${player.gameboard.ships[i].coords[j][1]}"]`
+      );
+      shipTile.classList.add("red");
     }
   }
 }

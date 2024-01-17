@@ -2,17 +2,19 @@
 }
 
 .container1 {
+  margin: 50px;
   outline: solid black;
   height: 600px;
   width: 600px;
   display: grid;
-
   grid-template-columns: repeat(8, 1fr);
-
   grid-template-rows: repeat(8, 1fr);
 }
 
-.row,
 .tile {
   outline: solid black;
+}
+
+.red {
+  background-color: red;
 }
