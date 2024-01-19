@@ -1,7 +1,8 @@
 * {
 }
 
-.container1 {
+.container1,
+.container2 {
   margin: 50px;
   outline: solid black;
   height: 600px;

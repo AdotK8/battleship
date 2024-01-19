@@ -19,14 +19,22 @@ export function displayBoard(container) {
   }
 }
 
-export function displayShips(player) {
+export function displayShips(player, container) {
   for (let i = 0; i < player.gameboard.ships.length; i++) {
     for (let j = 0; j < player.gameboard.ships[i].size; j++) {
-      console.log(player.gameboard.ships[i].coords[j]);
       let shipTile = document.querySelector(
-        `[data-x="${player.gameboard.ships[i].coords[j][0]}"][data-y="${player.gameboard.ships[i].coords[j][1]}"]`
+        `${container} [data-x="${player.gameboard.ships[i].coords[j][0]}"][data-y="${player.gameboard.ships[i].coords[j][1]}"]`
       );
       shipTile.classList.add("red");
     }
   }
+}
+
+export function displayHit(attackCoords) {
+  console.log("test");
+  let tile = document.querySelector(
+    `.container2 [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
+  );
+
+  tile.classList.add("red");
 }

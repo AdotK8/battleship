@@ -3,6 +3,7 @@ import gameboard from "./gameboard";
 import player from "./player";
 import { displayBoard } from "./UpdatingDom";
 import { displayShips } from "./UpdatingDom";
+import playGame from "./game";
 
 //creating players and gameboards
 let player1 = new player("ahmed");
@@ -62,4 +63,8 @@ const container1 = document.querySelector(".container1");
 const container2 = document.querySelector(".container2");
 
 displayBoard(container1);
-displayShips(player1);
+displayBoard(container2);
+displayShips(player1, ".container1");
+
+console.log(player2.gameboard.attacks);
+playGame(player1, player2);

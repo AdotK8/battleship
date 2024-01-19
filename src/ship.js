@@ -6,7 +6,6 @@ export default class ship {
   }
 
   hit() {
-    console.log("hit registered");
     return this.hits++;
   }
 

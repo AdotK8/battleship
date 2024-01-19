@@ -1,4 +1,5 @@
 import ship from "./ship";
+import { displayHit } from "./UpdatingDom";
 
 export default class gameboard {
   constructor() {
@@ -20,6 +21,7 @@ export default class gameboard {
       for (let j = 0; j <= this.ships[i].size - 1; j++) {
         if (attackCoords.toString() == this.ships[i].coords[j].toString()) {
           this.ships[i].hit();
+          displayHit(attackCoords);
           if (this.ships[i].isSunk()) {
             this.sunkenShips++;
           }
