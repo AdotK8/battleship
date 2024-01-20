@@ -1,5 +1,6 @@
 import ship from "./ship";
 import { displayHit } from "./UpdatingDom";
+import { displayMiss } from "./UpdatingDom";
 
 export default class gameboard {
   constructor() {
@@ -32,6 +33,7 @@ export default class gameboard {
 
     if (preHits == postHits) {
       this.logMisses(attackCoords);
+      displayMiss(attackCoords);
     } else return;
   }
 
