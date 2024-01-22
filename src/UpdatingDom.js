@@ -32,17 +32,17 @@ export function displayShips(player, container) {
   }
 }
 
-export function displayHit(attackCoords) {
+export function displayHit(attackCoords, container) {
   let tile = document.querySelector(
-    `.container2 [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
+    `${container} [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
 
   tile.classList.add("red");
 }
 
-export function displayMiss(attackCoords) {
+export function displayMiss(attackCoords, container) {
   let tile = document.querySelector(
-    `.container2 [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
+    `${container}  [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
 
   tile.classList.add("black");

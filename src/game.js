@@ -10,11 +10,11 @@ function userSelectAttack(player2) {
 
   for (let i = 0; i < divs.length; i++) {
     divs[i].addEventListener("click", function eventHandler() {
-      divs[i].classList.remove("live");
       console.log("test");
+      divs[i].classList.remove("live");
       let clickedCoords = [Number(this.dataset.x), Number(this.dataset.y)];
-      player2.gameboard.recieveAttack(clickedCoords);
-      divs[i].removeEventListener("click", eventHandler);
+      player2.gameboard.recieveAttack(clickedCoords, ".container2");
+      divss[i].removeEventListener("click", eventHandler);
     });
   }
 }

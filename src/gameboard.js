@@ -14,7 +14,7 @@ export default class gameboard {
     this.ships.push(new ship(size, coords));
   }
 
-  recieveAttack(attackCoords) {
+  recieveAttack(attackCoords, container) {
     this.logAttacks(attackCoords);
     let preHits = this.getTotalHits();
 
@@ -22,7 +22,7 @@ export default class gameboard {
       for (let j = 0; j <= this.ships[i].size - 1; j++) {
         if (attackCoords.toString() == this.ships[i].coords[j].toString()) {
           this.ships[i].hit();
-          displayHit(attackCoords);
+          displayHit(attackCoords, container);
           if (this.ships[i].isSunk()) {
             this.sunkenShips++;
           }
@@ -33,7 +33,7 @@ export default class gameboard {
 
     if (preHits == postHits) {
       this.logMisses(attackCoords);
-      displayMiss(attackCoords);
+      displayMiss(attackCoords, container);
     } else return;
   }
 
