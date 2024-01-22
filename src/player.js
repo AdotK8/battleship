@@ -19,7 +19,7 @@ export default class player {
     }
 
     if (isValid == false) {
-      this.sendRandomAttack();
+      this.sendRandomAttack(container);
     } else {
       this.gameboard.recieveAttack(temp, container);
       return;

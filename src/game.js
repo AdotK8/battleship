@@ -2,8 +2,8 @@ import player from "./player";
 import gameboard from "./gameboard";
 
 export default function playGame(player1, player2) {
-  // userSelectAttack(player1, player2);
-  player1.sendRandomAttack(".container1");
+  userSelectAttack(player1, player2);
+  // player1.sendRandomAttack(".container1");
 }
 
 function userSelectAttack(player1, player2) {

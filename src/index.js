@@ -69,6 +69,6 @@ const container2 = document.querySelector(".container2");
 
 displayBoard(container1);
 displayBoard(container2);
-displayShips(player1, ".container1");
+// displayShips(player1, ".container1");
 
 playGame(player1, player2);
