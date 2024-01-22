@@ -6,7 +6,7 @@ export default class player {
     this.gameboard = new gameboard();
   }
 
-  sendRandomAttack() {
+  sendRandomAttack(container) {
     let temp = this.getRandomCoords();
     const keysArray = Object.keys(this.gameboard.attacks);
     const count = keysArray.length;
@@ -21,8 +21,7 @@ export default class player {
     if (isValid == false) {
       this.sendRandomAttack();
     } else {
-      this.gameboard.recieveAttack(temp);
-      console.log(temp);
+      this.gameboard.recieveAttack(temp, container);
       return;
     }
   }

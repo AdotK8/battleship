@@ -2,10 +2,11 @@ import player from "./player";
 import gameboard from "./gameboard";
 
 export default function playGame(player1, player2) {
-  userSelectAttack(player2);
+  // userSelectAttack(player1, player2);
+  player1.sendRandomAttack(".container1");
 }
 
-function userSelectAttack(player2) {
+function userSelectAttack(player1, player2) {
   const divs = document.querySelectorAll(`.container2 .tile.live`);
 
   for (let i = 0; i < divs.length; i++) {
@@ -14,7 +15,6 @@ function userSelectAttack(player2) {
       divs[i].classList.remove("live");
       let clickedCoords = [Number(this.dataset.x), Number(this.dataset.y)];
       player2.gameboard.recieveAttack(clickedCoords, ".container2");
-      divss[i].removeEventListener("click", eventHandler);
     });
   }
 }
