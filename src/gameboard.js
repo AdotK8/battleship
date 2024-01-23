@@ -6,9 +6,9 @@ export default class gameboard {
   constructor() {
     this.misses = {};
     this.attacks = {};
-
     this.ships = [];
     this.sunkenShips = 0;
+    this.winner = false;
   }
   createShip(size, coords) {
     this.ships.push(new ship(size, coords));
@@ -24,7 +24,9 @@ export default class gameboard {
           this.ships[i].hit();
           displayHit(attackCoords, container);
           if (this.ships[i].isSunk()) {
+            console.log("this shit sunk");
             this.sunkenShips++;
+            this.checkIfLost();
           }
         }
       }
@@ -63,7 +65,10 @@ export default class gameboard {
     }
   }
 
-  checkWinner() {
+  checkIfLost() {
+    if (this.sunkenShips === this.ships.length) {
+      console.log("boo you lost");
+    }
     return this.sunkenShips === this.ships.length;
   }
 }

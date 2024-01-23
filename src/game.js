@@ -3,7 +3,6 @@ import gameboard from "./gameboard";
 
 export default function playGame(player1, player2) {
   userSelectAttack(player1, player2);
-  // player1.sendRandomAttack(".container1");
 }
 
 function userSelectAttack(player1, player2) {
@@ -17,9 +16,7 @@ function userSelectAttack(player1, player2) {
     if (e.target.classList.contains("live")) {
       player2.gameboard.recieveAttack(clickedCoords, ".container2");
       e.target.classList.remove("live");
-      container.removeEventListener("click", eventHandler);
-    } else if (!e.target.classList.contains("live")) {
-      console.log("test");
-    }
+      // container.removeEventListener("click", eventHandler);
+    } else return;
   });
 }

@@ -22,6 +22,7 @@ export default class player {
       this.sendRandomAttack(container);
     } else {
       this.gameboard.recieveAttack(temp, container);
+
       return;
     }
   }
