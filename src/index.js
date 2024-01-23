@@ -51,11 +51,6 @@ let shipCoords6 = {
   2: [7, 3],
 };
 
-player2.gameboard.attacks = {
-  0: [8, 8],
-  1: [7, 8],
-};
-
 //creating 3 ships for players
 player1.gameboard.createShip(5, shipCoords1);
 player1.gameboard.createShip(4, shipCoords2);

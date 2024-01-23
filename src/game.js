@@ -7,14 +7,19 @@ export default function playGame(player1, player2) {
 }
 
 function userSelectAttack(player1, player2) {
-  const divs = document.querySelectorAll(`.container2 .tile.live`);
+  const container = document.querySelector(".container2");
 
-  for (let i = 0; i < divs.length; i++) {
-    divs[i].addEventListener("click", function eventHandler() {
-      console.log("test");
-      divs[i].classList.remove("live");
-      let clickedCoords = [Number(this.dataset.x), Number(this.dataset.y)];
+  container.addEventListener("click", function eventHandler(e) {
+    let clickedCoords = [
+      Number(e.target.dataset.x),
+      Number(e.target.dataset.y),
+    ];
+    if (e.target.classList.contains("live")) {
       player2.gameboard.recieveAttack(clickedCoords, ".container2");
-    });
-  }
+      e.target.classList.remove("live");
+      container.removeEventListener("click", eventHandler);
+    } else if (!e.target.classList.contains("live")) {
+      console.log("test");
+    }
+  });
 }
