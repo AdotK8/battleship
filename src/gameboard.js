@@ -1,6 +1,7 @@
 import ship from "./ship";
 import { displayHit } from "./UpdatingDom";
 import { displayMiss } from "./UpdatingDom";
+import { gameOver } from "./game";
 
 export default class gameboard {
   constructor() {
@@ -8,7 +9,7 @@ export default class gameboard {
     this.attacks = {};
     this.ships = [];
     this.sunkenShips = 0;
-    this.winner = false;
+    this.turns = 0;
   }
   createShip(size, coords) {
     this.ships.push(new ship(size, coords));
@@ -21,6 +22,7 @@ export default class gameboard {
     for (let i = 0; i <= this.ships.length - 1; i++) {
       for (let j = 0; j <= this.ships[i].size - 1; j++) {
         if (attackCoords.toString() == this.ships[i].coords[j].toString()) {
+          this.turns++;
           this.ships[i].hit();
           displayHit(attackCoords, container);
           if (this.ships[i].isSunk()) {
@@ -35,6 +37,7 @@ export default class gameboard {
 
     if (preHits == postHits) {
       this.logMisses(attackCoords);
+      this.turns++;
       displayMiss(attackCoords, container);
     } else return;
   }
@@ -66,9 +69,6 @@ export default class gameboard {
   }
 
   checkIfLost() {
-    if (this.sunkenShips === this.ships.length) {
-      console.log("boo you lost");
-    }
     return this.sunkenShips === this.ships.length;
   }
 }
