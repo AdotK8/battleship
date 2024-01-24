@@ -66,6 +66,7 @@ export default function playGame() {
 
 function mainLoop(player1, player2) {
   const container = document.querySelector(".container2");
+  let delayInMilliseconds = 500;
 
   if (player1.gameboard.checkIfLost() || player2.gameboard.checkIfLost()) {
     endGame();
@@ -80,18 +81,13 @@ function mainLoop(player1, player2) {
         player2.gameboard.recieveAttack(clickedCoords, ".container2");
         e.target.classList.remove("live");
         container.removeEventListener("click", eventHandler);
-        player1.sendRandomAttack(".container1");
-        mainLoop(player1, player2);
+
+        setTimeout(function () {
+          player1.sendRandomAttack(".container1");
+          mainLoop(player1, player2);
+        }, delayInMilliseconds);
       } else return;
     });
-
-  function checkWinner() {
-    if (player1.gameboard.checkIfLost()) {
-      console.log(`${player2.name} is the winner`);
-    } else if (player2.gameboard.checkIfLost()) {
-      console.log(`${player1.name} is the winner`);
-    } else return;
-  }
 
   function endGame() {
     console.log("GAME IS OVER");
