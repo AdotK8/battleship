@@ -81,11 +81,16 @@ function mainLoop(player1, player2) {
         player2.gameboard.recieveAttack(clickedCoords, ".container2");
         e.target.classList.remove("live");
         container.removeEventListener("click", eventHandler);
-
-        setTimeout(function () {
-          player1.sendRandomAttack(".container1");
-          mainLoop(player1, player2);
-        }, delayInMilliseconds);
+        if (
+          player1.gameboard.checkIfLost() ||
+          player2.gameboard.checkIfLost()
+        ) {
+          endGame();
+        } else
+          setTimeout(function () {
+            player1.sendRandomAttack(".container1");
+            mainLoop(player1, player2);
+          }, delayInMilliseconds);
       } else return;
     });
 
