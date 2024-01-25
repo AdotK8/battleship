@@ -4,6 +4,7 @@ import { displayBoard } from "./UpdatingDom";
 
 export default function playGame() {
   let player1 = new player("ahmed");
+
   let player2 = new player("monica");
 
   let shipCoords1 = {
@@ -51,6 +52,7 @@ export default function playGame() {
   player1.gameboard.createShip(5, shipCoords1);
   player1.gameboard.createShip(4, shipCoords2);
   player1.gameboard.createShip(3, shipCoords3);
+
   player2.gameboard.createShip(5, shipCoords4);
   player2.gameboard.createShip(4, shipCoords5);
   player2.gameboard.createShip(3, shipCoords6);

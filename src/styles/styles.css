@@ -2,7 +2,8 @@
 }
 
 .container1,
-.container2 {
+.container2,
+.container3 {
   margin: 50px;
   outline: solid black;
   height: 600px;
@@ -22,4 +23,12 @@
 }
 .black {
   background-color: black;
+}
+
+.hide {
+  display: none;
+}
+
+.drag-over {
+  background-color: rgb(81, 255, 0);
 }
