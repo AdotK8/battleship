@@ -46,12 +46,19 @@ player1.gameboard.createShip(1, shipCoords4);
 // displayBoard(container);
 // displayShips(player1, ".container3");
 
-const item = document.querySelector(".red");
-item.addEventListener("dragstart", dragStart);
+function moveShips() {
+  const item = document.querySelector(".red");
+
+  item.addEventListener("dragstart", dragStart);
+}
+
+moveShips();
+
 function dragStart(e) {
   e.dataTransfer.setData("text/plain", e.target.id);
   setTimeout(() => {
-    e.target.classList.add("hide");
+    e.target.classList.remove("red");
+    e.target.setAttribute("draggable", false);
   }, 0);
 }
 
@@ -80,9 +87,8 @@ function dragLeave(e) {
 
 function drop(e) {
   e.target.classList.remove("drag-over");
-  const id = e.dataTransfer.getData("text/plain");
-  const draggable = document.querySelector(".red");
-  draggable.classList.remove("hide");
-  // e.target.setData(id);
-  console.log(e.target.dataset.x);
+
+  e.target.classList.add("red");
+  e.target.setAttribute("draggable", true);
+  moveShips();
 }
