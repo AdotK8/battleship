@@ -11,7 +11,6 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  gap: 10px;
 }
 
 .tile {
@@ -20,14 +19,6 @@
 
 .black {
   background-color: black;
-}
-
-/* .hide {
-  display: none;
-} */
-
-.drag-over {
-  background-color: rgb(81, 255, 0);
 }
 
 .red {
