@@ -5,7 +5,6 @@ export function displayBoard(container) {
   for (let i = 1; i <= 8; i++) {
     let newRow = document.createElement(`div`);
     newRow.classList.add("tile");
-    newRow.classList.add("live");
     newRow.dataset.x = i;
     newRow.dataset.y = 1;
     container.appendChild(newRow);
@@ -13,7 +12,6 @@ export function displayBoard(container) {
     for (let j = 1; j <= 7; j++) {
       let newTile = document.createElement("div");
       newTile.classList.add("tile");
-      newTile.classList.add("live");
       newTile.dataset.x = i;
       newTile.dataset.y = j + 1;
       container.appendChild(newTile);

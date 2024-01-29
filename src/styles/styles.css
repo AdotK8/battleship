@@ -21,6 +21,7 @@
   background-color: black;
 }
 
-.red {
+.red,
+.placedShip {
   background-color: red;
 }
