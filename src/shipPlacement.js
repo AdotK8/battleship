@@ -8,9 +8,11 @@ export async function placeShips() {
     await placeShip(4, 0, "ship2");
     console.log("Second ship placed successfully!");
 
+    // Place the third ship
     await placeShip(2, 1, "ship3");
     console.log("Second ship placed successfully!");
 
+    // Place the fourth ship
     await placeShip(5, 0, "ship4");
     console.log("Second ship placed successfully!");
 
@@ -96,7 +98,6 @@ function placeShip(size, direction, shipNumber) {
       });
       removeEventListeners();
       resolve();
-      // Do not resolve the promise here, let the caller handle it
     }
   });
 }

@@ -6,13 +6,20 @@ import { displayShips } from "./UpdatingDom";
 import playGame from "./game";
 import { placeShip } from "./shipPlacement";
 import { placeShips } from "./shipPlacement";
+import gitPic from "./images/github.svg";
 
 //creating 3 ships for players
 
 // playGame();
 
+const git = document.getElementById("git");
+const start = document.getElementById("start");
+git.src = gitPic;
+
 const container = document.querySelector(".container3");
 
 displayBoard(container);
 
-placeShips();
+start.addEventListener("click", () => {
+  placeShips();
+});

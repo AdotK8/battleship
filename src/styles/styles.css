@@ -1,12 +1,98 @@
 * {
+  /* outline: solid black; */
+}
+
+body,
+html {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main {
+  height: 75%;
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.title {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 250px;
+  align-items: center;
+  margin: 0;
+}
+
+.container3 {
+  /* border-radius: 5px; */
+  outline: solid black;
+  height: 700px;
+  width: 700px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+.start {
+  /* height: 10%; */
+  font-size: 60px;
+  font-weight: 400;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  border: solid black;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: black;
+}
+
+.start:hover {
+  background-color: rgb(54, 54, 54);
+}
+
+.sig {
+  height: 100%;
+  font-size: 60px;
+  font-weight: 100;
+  color: black;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+#git {
+  height: 100%;
+  width: 80px;
 }
 
 .container1,
-.container2,
-.container3 {
+.container2 {
   margin: 50px;
   outline: solid black;
-  height: 600px;
+  height: 100%;
   width: 600px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
