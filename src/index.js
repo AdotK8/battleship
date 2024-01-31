@@ -7,6 +7,7 @@ import playGame from "./game";
 import { placeShip } from "./shipPlacement";
 import { placeShips } from "./shipPlacement";
 import gitPic from "./images/github.svg";
+import { rotateShip } from "./shipPlacement";
 
 //creating 3 ships for players
 
@@ -14,12 +15,16 @@ import gitPic from "./images/github.svg";
 
 const git = document.getElementById("git");
 const start = document.getElementById("start");
+const topText = document.querySelector(".invisible");
 git.src = gitPic;
 
 const container = document.querySelector(".container3");
 
 displayBoard(container);
+placeShips();
+rotateShip();
 
-start.addEventListener("click", () => {
-  placeShips();
-});
+// start.addEventListener("click", () => {
+//   placeShips();
+//   topText.classList.remove("invisible");
+// });

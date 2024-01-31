@@ -7,6 +7,11 @@ html {
   height: 100vh;
   padding: 0;
   margin: 0;
+  background: linear-gradient(
+    135deg,
+    #82b8d9,
+    #4fa4c1
+  ); /* Light Blue to Turquoise */
 }
 
 .container {
@@ -25,8 +30,25 @@ html {
   height: 75%;
   display: flex;
   gap: 100px;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  flex-direction: column;
+}
+
+.top {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 100px;
+  align-items: center;
+  margin: 0;
+  height: 15%;
+}
+
+.middle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
 }
 
 .footer {
@@ -46,19 +68,32 @@ html {
   margin: 0;
 }
 
+/* .invisible {
+  visibility: hidden;
+} */
+
 .container3 {
   /* border-radius: 5px; */
-  outline: solid black;
+  /* outline: solid black; */
   height: 700px;
   width: 700px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
+  gap: 10px;
+  /* background-color: rebeccapurple; */
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
 }
 
-.start {
+.start,
+.rotate {
   /* height: 10%; */
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 400;
   color: white;
   font-family: "Open Sans", sans-serif;
@@ -67,9 +102,11 @@ html {
   border-radius: 5px;
   padding: 10px;
   background-color: black;
+  width: 50%;
 }
 
-.start:hover {
+.start:hover,
+.rotate:hover {
   background-color: rgb(54, 54, 54);
 }
 
@@ -100,7 +137,7 @@ html {
 }
 
 .tile {
-  outline: solid black;
+  outline: solid black 3px;
 }
 
 .black {
@@ -109,5 +146,5 @@ html {
 
 .red,
 .placedShip {
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.5);
 }

@@ -1,19 +1,33 @@
+let direction = 0;
+
+export function rotateShip() {
+  const rotate = document.getElementById("rotate");
+  rotate.addEventListener("click", () => {
+    if (direction == 0) {
+      direction = 1;
+      console.log(direction);
+    } else if (direction == 1) {
+      direction = 0;
+    }
+  });
+}
+
 export async function placeShips() {
   try {
     // Place the first ship
-    await placeShip(3, 1, "ship1");
+    await placeShip(3, "ship1");
     console.log("First ship placed successfully!");
 
     // Place the second ship
-    await placeShip(4, 0, "ship2");
+    await placeShip(4, "ship2");
     console.log("Second ship placed successfully!");
 
     // Place the third ship
-    await placeShip(2, 1, "ship3");
+    await placeShip(2, "ship3");
     console.log("Second ship placed successfully!");
 
     // Place the fourth ship
-    await placeShip(5, 0, "ship4");
+    await placeShip(5, "ship4");
     console.log("Second ship placed successfully!");
 
     // Place additional ships as needed
@@ -26,7 +40,7 @@ export async function placeShips() {
   }
 }
 
-function placeShip(size, direction, shipNumber) {
+function placeShip(size, shipNumber) {
   const tiles = document.querySelectorAll(".tile");
 
   return new Promise((resolve, reject) => {
