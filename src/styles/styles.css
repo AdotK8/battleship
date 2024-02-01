@@ -7,11 +7,36 @@ html {
   height: 100vh;
   padding: 0;
   margin: 0;
-  background: linear-gradient(
-    135deg,
-    #82b8d9,
-    #4fa4c1
-  ); /* Light Blue to Turquoise */
+  background: linear-gradient(135deg, #1f2e51, #1a283e);
+  overflow: hidden;
+}
+
+/* Sonar background */
+.background {
+  pointer-events: none;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 0, 0.4) 0%,
+    transparent 60%
+  ); /* Adjusted gradient */
+  animation: sonarAnimation 1.5s ease-out infinite;
+}
+
+@keyframes sonarAnimation {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
 .container {
@@ -43,6 +68,7 @@ html {
   align-items: center;
   margin: 0;
   height: 15%;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .middle {
@@ -66,6 +92,7 @@ html {
   font-size: 250px;
   align-items: center;
   margin: 0;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* .invisible {
@@ -73,15 +100,12 @@ html {
 } */
 
 .container3 {
-  /* border-radius: 5px; */
-  /* outline: solid black; */
   height: 700px;
   width: 700px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
   gap: 10px;
-  /* background-color: rebeccapurple; */
 }
 .buttons {
   display: flex;
@@ -92,29 +116,31 @@ html {
 
 .start,
 .rotate {
-  /* height: 10%; */
-  font-size: 40px;
-  font-weight: 400;
-  color: white;
+  font-size: 35px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
   font-family: "Open Sans", sans-serif;
   text-align: center;
-  border: solid black;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: black;
-  width: 50%;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  background-color: #243959;
+  width: 60%;
+  max-width: 300px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .start:hover,
 .rotate:hover {
-  background-color: rgb(54, 54, 54);
+  background-color: #182436;
 }
 
 .sig {
   height: 100%;
   font-size: 60px;
   font-weight: 100;
-  color: black;
+  color: rgba(255, 255, 255, 0.6);
   font-family: "Open Sans", sans-serif;
   text-align: center;
   margin: 0;
@@ -137,7 +163,18 @@ html {
 }
 
 .tile {
-  outline: solid black 3px;
+  /* Other styles for your tiles */
+  border: 3px solid rgb(255, 255, 255); /* Set the initial border */
+  animation: shimmer 2s linear infinite alternate; /* Apply shimmer animation */
+}
+
+@keyframes shimmer {
+  0% {
+    border-color: rgba(255, 255, 255, 0.6); /* Starting border color */
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.8); /* Ending border color */
+  }
 }
 
 .black {
@@ -146,5 +183,24 @@ html {
 
 .red,
 .placedShip {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(
+    0,
+    255,
+    0,
+    0.4
+  ); /* Set a green background color with opacity */
+  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.4); /* Apply a subtle shadow effect */
+  animation: bobbing 2s ease-in-out infinite; /* Apply bobbing animation */
+}
+
+@keyframes bobbing {
+  0% {
+    transform: translateY(0); /* Initial position */
+  }
+  50% {
+    transform: translateY(-5px); /* Bobbing up */
+  }
+  100% {
+    transform: translateY(0); /* Returning to initial position */
+  }
 }
