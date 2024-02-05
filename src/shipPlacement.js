@@ -91,7 +91,7 @@ function placeShip(size, shipNumber) {
               tile.removeEventListener("click", handleMouseClick);
               return;
             }
-            ship.classList.add("red");
+            ship.classList.add("prePlacedShip");
           } else {
             console.error("Invalid ship placement");
             tile.removeEventListener("click", handleMouseClick);
@@ -103,14 +103,14 @@ function placeShip(size, shipNumber) {
 
     function handleMouseLeave(event) {
       const tile = event.target;
-      const ship1 = document.querySelectorAll(".red");
+      const ship1 = document.querySelectorAll(".prePlacedShip");
       ship1.forEach((ship) => {
-        ship.classList.remove("red");
+        ship.classList.remove("prePlacedShip");
       });
     }
 
     function handleMouseClick(event) {
-      const shipTiles = document.querySelectorAll(".red");
+      const shipTiles = document.querySelectorAll(".prePlacedShip");
       shipTiles.forEach((tile) => {
         tile.classList.add("placedShip");
         tile.classList.add(shipNumber);

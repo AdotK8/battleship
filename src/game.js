@@ -16,15 +16,9 @@ export default function playGame(
   player1.gameboard.createShip(2, shipCoords3);
   player1.gameboard.createShip(5, shipCoords4);
 
-  player2.gameboard.createShip(5, shipCoords1);
+  player2.gameboard.createShip(3, shipCoords1);
   player2.gameboard.createShip(4, shipCoords2);
-  player2.gameboard.createShip(3, shipCoords3);
-
-  const container1 = document.querySelector(".container3");
-  const container2 = document.querySelector(".container2");
-
-  // displayBoard(container1);
-  // displayBoard(container2);
+  player2.gameboard.createShip(2, shipCoords3);
 
   mainLoop(player1, player2);
 }
@@ -41,6 +35,8 @@ function mainLoop(player1, player2) {
         Number(e.target.dataset.x),
         Number(e.target.dataset.y),
       ];
+
+      console.log(clickedCoords);
 
       if (e.target.classList.contains("live")) {
         player2.gameboard.recieveAttack(clickedCoords, ".container2");

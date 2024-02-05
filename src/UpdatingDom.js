@@ -27,7 +27,6 @@ export function displayShips(player, container) {
       let shipTile = document.querySelector(
         `${container} [data-x="${player.gameboard.ships[i].coords[j][0]}"][data-y="${player.gameboard.ships[i].coords[j][1]}"]`
       );
-      shipTile.classList.add("red");
     }
   }
 }
@@ -37,7 +36,7 @@ export function displayHit(attackCoords, container) {
     `${container} [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
 
-  tile.classList.add("red");
+  tile.classList.add("hit");
 }
 
 export function displayMiss(attackCoords, container) {

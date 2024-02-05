@@ -153,21 +153,9 @@ html {
   width: 80px;
 }
 
-/* .container1,
-.container2 {
-  margin: 50px;
-  outline: solid black;
-  height: 100%;
-  width: 600px;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-} */
-
 .tile {
-  /* Other styles for your tiles */
-  border: 3px solid rgb(255, 255, 255); /* Set the initial border */
-  animation: shimmer 2s linear infinite alternate; /* Apply shimmer animation */
+  border: 3px solid rgb(255, 255, 255);
+  animation: shimmer 2s linear infinite alternate;
 }
 
 @keyframes shimmer {
@@ -181,17 +169,28 @@ html {
 
 .black {
   background-color: black;
+  animation: bobbing 2s ease-in-out infinite;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
 }
 
-.red,
+.black + .placedShip {
+  background-color: black;
+}
+
+.hit + .placedShip {
+  background-color: rgb(252, 0, 0);
+}
+
+.hit {
+  background-color: rgb(252, 0, 0);
+  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
+  animation: bobbing 2s ease-in-out infinite;
+}
+
+.prePlacedShip,
 .placedShip {
-  background-color: rgba(
-    0,
-    255,
-    0,
-    0.4
-  ); /* Set a green background color with opacity */
-  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.4); /* Apply a subtle shadow effect */
+  background-color: rgba(0, 255, 0, 0.4);
+  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.4);
   animation: bobbing 2s ease-in-out infinite; /* Apply bobbing animation */
 }
 
