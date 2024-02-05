@@ -2,66 +2,29 @@ import player from "./player";
 import gameboard from "./gameboard";
 import { displayBoard } from "./UpdatingDom";
 
-export default function playGame() {
-  let player1 = new player("ahmed");
+export default function playGame(
+  shipCoords1,
+  shipCoords2,
+  shipCoords3,
+  shipCoords4
+) {
+  let player1 = new player("player");
+  let player2 = new player("computer");
 
-  let player2 = new player("monica");
-
-  let shipCoords1 = {
-    0: [6, 4],
-    1: [6, 5],
-    2: [6, 6],
-    3: [6, 7],
-    4: [6, 8],
-  };
-
-  let shipCoords2 = {
-    0: [4, 2],
-    1: [4, 3],
-    2: [4, 4],
-    3: [4, 5],
-  };
-
-  let shipCoords3 = {
-    0: [2, 1],
-    1: [2, 2],
-    2: [2, 3],
-  };
-
-  let shipCoords4 = {
-    0: [1, 4],
-    1: [1, 5],
-    2: [1, 6],
-    3: [1, 7],
-    4: [1, 8],
-  };
-
-  let shipCoords5 = {
-    0: [2, 1],
-    1: [2, 2],
-    2: [2, 3],
-    3: [2, 4],
-  };
-
-  let shipCoords6 = {
-    0: [7, 1],
-    1: [7, 2],
-    2: [7, 3],
-  };
-
-  player1.gameboard.createShip(5, shipCoords1);
+  player1.gameboard.createShip(3, shipCoords1);
   player1.gameboard.createShip(4, shipCoords2);
-  player1.gameboard.createShip(3, shipCoords3);
+  player1.gameboard.createShip(2, shipCoords3);
+  player1.gameboard.createShip(5, shipCoords4);
 
-  player2.gameboard.createShip(5, shipCoords4);
-  player2.gameboard.createShip(4, shipCoords5);
-  player2.gameboard.createShip(3, shipCoords6);
+  player2.gameboard.createShip(5, shipCoords1);
+  player2.gameboard.createShip(4, shipCoords2);
+  player2.gameboard.createShip(3, shipCoords3);
 
-  const container1 = document.querySelector(".container1");
+  const container1 = document.querySelector(".container3");
   const container2 = document.querySelector(".container2");
 
-  displayBoard(container1);
-  displayBoard(container2);
+  // displayBoard(container1);
+  // displayBoard(container2);
 
   mainLoop(player1, player2);
 }
@@ -90,7 +53,7 @@ function mainLoop(player1, player2) {
           endGame();
         } else
           setTimeout(function () {
-            player1.sendRandomAttack(".container1");
+            player1.sendRandomAttack(".container3");
             mainLoop(player1, player2);
           }, delayInMilliseconds);
       } else return;

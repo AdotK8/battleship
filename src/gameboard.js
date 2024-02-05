@@ -21,7 +21,7 @@ export default class gameboard {
 
     for (let i = 0; i <= this.ships.length - 1; i++) {
       for (let j = 0; j <= this.ships[i].size - 1; j++) {
-        if (attackCoords.toString() == this.ships[i].coords[j].toString()) {
+        if (attackCoords == this.ships[i].coords[j]) {
           this.turns++;
           this.ships[i].hit();
           displayHit(attackCoords, container);

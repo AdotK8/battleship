@@ -9,10 +9,6 @@ import { placeShips } from "./shipPlacement";
 import gitPic from "./images/github.svg";
 import { rotateShip } from "./shipPlacement";
 
-//creating 3 ships for players
-
-// playGame();
-
 const git = document.getElementById("git");
 const start = document.getElementById("start");
 const topText = document.querySelector(".invisible");

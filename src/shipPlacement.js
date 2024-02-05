@@ -1,3 +1,6 @@
+import { startGameDom } from "./UpdatingDom";
+import playGame from "./game";
+
 let direction = 0;
 
 export function rotateShip() {
@@ -24,16 +27,18 @@ export async function placeShips() {
 
     // Place the third ship
     await placeShip(2, "ship3");
-    console.log("Second ship placed successfully!");
+    console.log("Third ship placed successfully!");
 
     // Place the fourth ship
     await placeShip(5, "ship4");
-    console.log("Second ship placed successfully!");
+    console.log("Fourth ship placed successfully!");
 
     // Place additional ships as needed
 
     // All ships placed successfully
     console.log("All ships placed successfully!");
+    const startButton = document.querySelector(".start");
+    startButton.addEventListener("click", startGame);
   } catch (error) {
     console.error("Failed to place ships:", error);
     // Handle errors if ship placement fails
@@ -114,4 +119,42 @@ function placeShip(size, shipNumber) {
       resolve();
     }
   });
+}
+
+function startGame() {
+  startGameDom();
+  getUserShipCoords();
+}
+
+function getUserShipCoords() {
+  let ship1 = {};
+  let ship2 = {};
+  let ship3 = {};
+  let ship4 = {};
+
+  for (let i = 1; i <= 4; i++) {
+    const ship = document.querySelectorAll(`.ship${i}`);
+    for (let j = 0; j < ship.length; j++) {
+      const x = parseInt(ship[j].dataset.x);
+      const y = parseInt(ship[j].dataset.y);
+      switch (i) {
+        case 1:
+          ship1[j] = [x, y];
+          break;
+        case 2:
+          ship2[j] = [x, y];
+          break;
+        case 3:
+          ship3[j] = [x, y];
+          break;
+        case 4:
+          ship4[j] = [x, y];
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  playGame(ship1, ship2, ship3, ship4);
 }

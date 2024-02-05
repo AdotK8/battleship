@@ -99,7 +99,9 @@ html {
   visibility: hidden;
 } */
 
-.container3 {
+.container3,
+.container2,
+.container1 {
   height: 700px;
   width: 700px;
   display: grid;
@@ -151,7 +153,7 @@ html {
   width: 80px;
 }
 
-.container1,
+/* .container1,
 .container2 {
   margin: 50px;
   outline: solid black;
@@ -160,7 +162,7 @@ html {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-}
+} */
 
 .tile {
   /* Other styles for your tiles */
