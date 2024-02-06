@@ -173,15 +173,12 @@ html {
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
 }
 
-.black + .placedShip {
-  background-color: black;
-}
-
-.hit + .placedShip {
+.hit.placedShip {
   background-color: rgb(252, 0, 0);
 }
 
 .hit {
+  z-index: 1;
   background-color: rgb(252, 0, 0);
   box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
   animation: bobbing 2s ease-in-out infinite;

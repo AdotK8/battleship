@@ -16,8 +16,8 @@ export default class gameboard {
   }
 
   recieveAttack(attackCoords, container) {
+    console.log(attackCoords);
     this.logAttacks(attackCoords);
-    console.log(this.attacks);
     let preHits = this.getTotalHits();
 
     for (let i = 0; i <= this.ships.length - 1; i++) {

@@ -27,15 +27,17 @@ export function displayShips(player, container) {
       let shipTile = document.querySelector(
         `${container} [data-x="${player.gameboard.ships[i].coords[j][0]}"][data-y="${player.gameboard.ships[i].coords[j][1]}"]`
       );
+      shipTile.classList.add("placedShip");
+      console.log("test");
     }
   }
 }
 
 export function displayHit(attackCoords, container) {
+  console.log(attackCoords);
   let tile = document.querySelector(
     `${container} [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
-
   tile.classList.add("hit");
 }
 
@@ -48,11 +50,18 @@ export function displayMiss(attackCoords, container) {
 }
 
 export function startGameDom() {
+  const placedContainer = document.querySelector(".container3");
+  placedContainer.remove();
   const buttons = document.querySelector(".buttons");
   buttons.remove();
   const boardContainer = document.querySelector(".middle");
   const enemyContainer = document.createElement("div");
+  const playerContainer = document.createElement("div");
+
   enemyContainer.classList.add("container2");
+  playerContainer.classList.add("container3");
+  boardContainer.appendChild(playerContainer);
   boardContainer.appendChild(enemyContainer);
+  displayBoard(playerContainer);
   displayBoard(enemyContainer);
 }

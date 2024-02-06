@@ -1,6 +1,7 @@
 import player from "./player";
 import gameboard from "./gameboard";
 import { displayBoard } from "./UpdatingDom";
+import { displayShips } from "./UpdatingDom";
 
 export default function playGame(
   shipCoords1,
@@ -20,6 +21,10 @@ export default function playGame(
   player2.gameboard.createShip(4, shipCoords2);
   player2.gameboard.createShip(2, shipCoords3);
 
+  console.log(player1.gameboard.ships);
+
+  displayShips(player1, ".container3");
+
   mainLoop(player1, player2);
 }
 
@@ -35,8 +40,6 @@ function mainLoop(player1, player2) {
         Number(e.target.dataset.x),
         Number(e.target.dataset.y),
       ];
-
-      console.log(clickedCoords);
 
       if (e.target.classList.contains("live")) {
         player2.gameboard.recieveAttack(clickedCoords, ".container2");

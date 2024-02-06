@@ -38,7 +38,7 @@ export async function placeShips() {
     // All ships placed successfully
     console.log("All ships placed successfully!");
     const startButton = document.querySelector(".start");
-    startButton.addEventListener("click", startGame);
+    startButton.addEventListener("click", getUserShipCoords);
   } catch (error) {
     console.error("Failed to place ships:", error);
     // Handle errors if ship placement fails
@@ -121,11 +121,6 @@ function placeShip(size, shipNumber) {
   });
 }
 
-function startGame() {
-  startGameDom();
-  getUserShipCoords();
-}
-
 function getUserShipCoords() {
   let ship1 = {};
   let ship2 = {};
@@ -155,6 +150,8 @@ function getUserShipCoords() {
       }
     }
   }
+  // console.log(ship1, ship2, ship3, ship4);
 
+  startGameDom();
   playGame(ship1, ship2, ship3, ship4);
 }
