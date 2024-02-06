@@ -1,5 +1,16 @@
-import player from "./player";
-import gameboard from "./gameboard";
+const text = document.querySelector(".top-text");
+
+export function displayUsersTurn() {
+  text.innerHTML = "attack the enemy";
+}
+
+export function displayWin() {
+  text.innerHTML = "you won!";
+}
+
+export function displayLose() {
+  text.innerHTML = "you lost!";
+}
 
 export function displayBoard(container) {
   for (let i = 1; i <= 8; i++) {
@@ -28,13 +39,11 @@ export function displayShips(player, container) {
         `${container} [data-x="${player.gameboard.ships[i].coords[j][0]}"][data-y="${player.gameboard.ships[i].coords[j][1]}"]`
       );
       shipTile.classList.add("placedShip");
-      console.log("test");
     }
   }
 }
 
 export function displayHit(attackCoords, container) {
-  console.log(attackCoords);
   let tile = document.querySelector(
     `${container} [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
@@ -50,18 +59,24 @@ export function displayMiss(attackCoords, container) {
 }
 
 export function startGameDom() {
-  const placedContainer = document.querySelector(".container3");
+  displayUsersTurn();
+
+  const placedContainer = document.querySelector(".container1");
   placedContainer.remove();
+
   const buttons = document.querySelector(".buttons");
   buttons.remove();
+
   const boardContainer = document.querySelector(".middle");
   const enemyContainer = document.createElement("div");
   const playerContainer = document.createElement("div");
 
   enemyContainer.classList.add("container2");
-  playerContainer.classList.add("container3");
+  playerContainer.classList.add("container1");
+
   boardContainer.appendChild(playerContainer);
   boardContainer.appendChild(enemyContainer);
+
   displayBoard(playerContainer);
   displayBoard(enemyContainer);
 }

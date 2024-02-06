@@ -1,7 +1,3 @@
-* {
-  /* outline: solid black; */
-}
-
 body,
 html {
   height: 100vh;
@@ -24,7 +20,7 @@ html {
     circle at center,
     rgba(0, 255, 0, 0.4) 0%,
     transparent 60%
-  ); /* Adjusted gradient */
+  );
   animation: sonarAnimation 1.5s ease-out infinite;
 }
 
@@ -55,7 +51,6 @@ html {
   height: 75%;
   display: flex;
   gap: 100px;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
 }
@@ -74,7 +69,7 @@ html {
 .middle {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10%;
+  gap: 100px;
 }
 
 .footer {
@@ -95,13 +90,8 @@ html {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* .invisible {
-  visibility: hidden;
-} */
-
-.container3,
-.container2,
-.container1 {
+.container1,
+.container2 {
   height: 700px;
   width: 700px;
   display: grid;
@@ -160,16 +150,15 @@ html {
 
 @keyframes shimmer {
   0% {
-    border-color: rgba(255, 255, 255, 0.6); /* Starting border color */
+    border-color: rgba(255, 255, 255, 0.6);
   }
   100% {
-    border-color: rgba(255, 255, 255, 0.8); /* Ending border color */
+    border-color: rgba(255, 255, 255, 0.8);
   }
 }
 
 .black {
   background-color: black;
-  animation: bobbing 2s ease-in-out infinite;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
 }
 
@@ -188,17 +177,17 @@ html {
 .placedShip {
   background-color: rgba(0, 255, 0, 0.4);
   box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.4);
-  animation: bobbing 2s ease-in-out infinite; /* Apply bobbing animation */
+  animation: bobbing 2s ease-in-out infinite;
 }
 
 @keyframes bobbing {
   0% {
-    transform: translateY(0); /* Initial position */
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-5px); /* Bobbing up */
+    transform: translateY(-5px);
   }
   100% {
-    transform: translateY(0); /* Returning to initial position */
+    transform: translateY(0);
   }
 }

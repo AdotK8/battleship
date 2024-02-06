@@ -17,31 +17,18 @@ export function rotateShip() {
 
 export async function placeShips() {
   try {
-    // Place the first ship
     await placeShip(3, "ship1");
-    console.log("First ship placed successfully!");
 
-    // Place the second ship
     await placeShip(4, "ship2");
-    console.log("Second ship placed successfully!");
 
-    // Place the third ship
     await placeShip(2, "ship3");
-    console.log("Third ship placed successfully!");
 
-    // Place the fourth ship
     await placeShip(5, "ship4");
-    console.log("Fourth ship placed successfully!");
 
-    // Place additional ships as needed
-
-    // All ships placed successfully
-    console.log("All ships placed successfully!");
     const startButton = document.querySelector(".start");
     startButton.addEventListener("click", getUserShipCoords);
   } catch (error) {
     console.error("Failed to place ships:", error);
-    // Handle errors if ship placement fails
   }
 }
 
@@ -150,7 +137,6 @@ function getUserShipCoords() {
       }
     }
   }
-  // console.log(ship1, ship2, ship3, ship4);
 
   startGameDom();
   playGame(ship1, ship2, ship3, ship4);

@@ -1,7 +1,6 @@
 import ship from "./ship";
 import { displayHit } from "./UpdatingDom";
 import { displayMiss } from "./UpdatingDom";
-import { gameOver } from "./game";
 
 export default class gameboard {
   constructor() {
@@ -16,7 +15,6 @@ export default class gameboard {
   }
 
   recieveAttack(attackCoords, container) {
-    console.log(attackCoords);
     this.logAttacks(attackCoords);
     let preHits = this.getTotalHits();
 
@@ -37,7 +35,6 @@ export default class gameboard {
     let postHits = this.getTotalHits();
 
     if (preHits == postHits) {
-      console.log("miss");
       this.logMisses(attackCoords);
       this.turns++;
       displayMiss(attackCoords, container);
