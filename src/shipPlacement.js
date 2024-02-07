@@ -119,6 +119,7 @@ function getUserShipCoords() {
     for (let j = 0; j < ship.length; j++) {
       const x = parseInt(ship[j].dataset.x);
       const y = parseInt(ship[j].dataset.y);
+
       switch (i) {
         case 1:
           ship1[j] = [x, y];

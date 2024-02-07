@@ -25,14 +25,13 @@ export default function playGame(
   player2.gameboard.createShip(5, randomShips[3].coordinates);
 
   displayShips(player1, ".container1");
-  displayShips(player2, ".container2");
 
   mainLoop(player1, player2);
 }
 
 function mainLoop(player1, player2) {
   const container = document.querySelector(".container2");
-  let delayInMilliseconds = 500;
+  let delayInMilliseconds = 1000;
 
   if (player1.gameboard.checkIfLost() || player2.gameboard.checkIfLost()) {
     endGame();

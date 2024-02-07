@@ -98,6 +98,8 @@ html {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
   gap: 10px;
+  position: relative;
+  perspective: 800px;
 }
 .buttons {
   display: flex;
@@ -157,27 +159,93 @@ html {
   }
 }
 
+@keyframes rotateY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
 .black {
-  background-color: black;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateY 1s linear forwards;
 }
 
+.black:before,
+.black:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.black:before {
+  background-color: none; /* Front color */
+}
+
+.black:after {
+  background-color: #000000; /* Back color */
+  transform: rotateY(180deg); /* Initially flipped to back */
+  border-color: #000000;
+}
+
+.hit,
 .hit.placedShip {
-  background-color: rgb(252, 0, 0);
+  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateY 1s linear forwards;
+  /* animation: bobbing 2s ease-in-out infinite; */
 }
 
-.hit {
-  z-index: 1;
-  background-color: rgb(252, 0, 0);
+.hit.placedShip:before,
+.hit.placedShip:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.hit:before,
+.hit:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.hit:before {
+  background-color: none; /* Front color */
+}
+
+.hit.placedShip:before {
+  background-color: rgba(0, 255, 0, 0.4); /* Front color */
+  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.4);
+}
+
+.hit:after {
+  background-color: rgb(252, 0, 0); /* Back color */
+  transform: rotateY(180deg); /* Initially flipped to back */
   box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
-  animation: bobbing 2s ease-in-out infinite;
+}
+
+.hit.placedShip:after {
+  background-color: rgb(252, 0, 0); /* Back color */
+  transform: rotateY(180deg); /* Initially flipped to back */
+  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
 }
 
 .prePlacedShip,
 .placedShip {
   background-color: rgba(0, 255, 0, 0.4);
   box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.4);
-  animation: bobbing 2s ease-in-out infinite;
 }
 
 @keyframes bobbing {
