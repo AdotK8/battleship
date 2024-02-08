@@ -146,8 +146,13 @@ html {
 }
 
 .tile {
-  border: 3px solid rgb(255, 255, 255);
-  animation: shimmer 2s linear infinite alternate;
+  border: 3px solid rgba(254, 254, 254, 0.8);
+  background: none;
+  transition: background-color 1s ease;
+}
+
+.container2 .tile:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 @keyframes shimmer {
@@ -190,17 +195,15 @@ html {
 
 .black:after {
   background-color: #000000; /* Back color */
-  transform: rotateY(180deg); /* Initially flipped to back */
-  border-color: #000000;
+  transform: rotateY(180deg);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
 }
 
 .hit,
 .hit.placedShip {
-  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
   position: relative;
   transform-style: preserve-3d;
   animation: rotateY 1s linear forwards;
-  /* animation: bobbing 2s ease-in-out infinite; */
 }
 
 .hit.placedShip:before,
@@ -223,6 +226,7 @@ html {
 
 .hit:before {
   background-color: none; /* Front color */
+  box-shadow: none;
 }
 
 .hit.placedShip:before {
@@ -232,30 +236,17 @@ html {
 
 .hit:after {
   background-color: rgb(252, 0, 0); /* Back color */
-  transform: rotateY(180deg); /* Initially flipped to back */
-  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
+  transform: rotateY(180deg);
+  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.8);
 }
 
 .hit.placedShip:after {
   background-color: rgb(252, 0, 0); /* Back color */
-  transform: rotateY(180deg); /* Initially flipped to back */
-  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.4);
+  transform: rotateY(180deg);
+  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.8);
 }
 
 .prePlacedShip,
 .placedShip {
   background-color: rgba(0, 255, 0, 0.4);
-  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.4);
-}
-
-@keyframes bobbing {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }

@@ -31,7 +31,7 @@ export default function playGame(
 
 function mainLoop(player1, player2) {
   const container = document.querySelector(".container2");
-  let delayInMilliseconds = 1000;
+  let delayInMilliseconds = 1500;
 
   if (player1.gameboard.checkIfLost() || player2.gameboard.checkIfLost()) {
     endGame();
