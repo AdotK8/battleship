@@ -95,6 +95,10 @@ html {
   color: rgba(255, 255, 255, 0.6);
 }
 
+.live {
+  cursor: pointer;
+}
+
 .container1,
 .container2 {
   height: 700px;
@@ -106,11 +110,32 @@ html {
   position: relative;
   perspective: 800px;
 }
+
+.container2 {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.buttons.fade-out {
+  opacity: 0;
 }
 
 .start,
@@ -254,5 +279,4 @@ html {
 .prePlacedShip,
 .placedShip {
   background-color: rgba(0, 255, 0, 0.4);
-  /* box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.8); */
 }

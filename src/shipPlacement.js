@@ -140,5 +140,8 @@ function getUserShipCoords() {
   }
 
   startGameDom();
-  playGame(ship1, ship2, ship3, ship4);
+
+  setTimeout(() => {
+    playGame(ship1, ship2, ship3, ship4);
+  }, 1000);
 }
