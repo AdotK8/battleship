@@ -58,29 +58,6 @@ export function displayMiss(attackCoords, container) {
   tile.classList.add("black");
 }
 
-// export function startGameDom() {
-//   displayUsersTurn();
-
-//   const placedContainer = document.querySelector(".container1");
-//   placedContainer.remove();
-
-//   const buttons = document.querySelector(".buttons");
-//   buttons.remove();
-
-//   const boardContainer = document.querySelector(".middle");
-//   const enemyContainer = document.createElement("div");
-//   const playerContainer = document.createElement("div");
-
-//   enemyContainer.classList.add("container2");
-//   playerContainer.classList.add("container1");
-
-//   boardContainer.appendChild(playerContainer);
-//   boardContainer.appendChild(enemyContainer);
-
-//   displayBoard(playerContainer);
-//   displayBoard(enemyContainer);
-// }
-
 export function startGameDom() {
   const buttons = document.querySelector(".buttons");
   buttons.classList.add("fade-out");

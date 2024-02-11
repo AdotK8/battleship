@@ -6,8 +6,8 @@ html {
   overflow: hidden;
   background: linear-gradient(
     -45deg,
-    #06263a,
-    #5b2e7b,
+    #da8414,
+    #7b2e2e,
     #00603d,
     #196569,
     #1e2384
@@ -131,11 +131,13 @@ html {
   gap: 10px;
   justify-content: center;
   opacity: 1;
-  transition: opacity 1s ease;
+  transform: translateX(0);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .buttons.fade-out {
   opacity: 0;
+  transform: translateX(200px);
 }
 
 .start,
