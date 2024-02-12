@@ -2,6 +2,7 @@ import player from "./player";
 import { displayShips } from "./UpdatingDom";
 import { generateShips } from "./generateShips";
 import { displayLose, displayWin } from "./UpdatingDom";
+import { playLoseSound, playWinSound } from "./sounds";
 
 export default function playGame(
   shipCoords1,
@@ -31,8 +32,10 @@ export default function playGame(
 
 function mainLoop(player1, player2) {
   const container = document.querySelector(".container2");
-  let delayInMilliseconds = 1500;
 
+  let delayBeforeMainLoop = 1500;
+  let delayBeforeAttack = 1500;
+  addHoverEffect();
   if (player1.gameboard.checkIfLost() || player2.gameboard.checkIfLost()) {
     endGame();
   } else
@@ -43,6 +46,7 @@ function mainLoop(player1, player2) {
       ];
 
       if (e.target.classList.contains("live")) {
+        addHoverEffect();
         player2.gameboard.recieveAttack(clickedCoords, ".container2");
         e.target.classList.remove("live");
         container.removeEventListener("click", eventHandler);
@@ -54,15 +58,34 @@ function mainLoop(player1, player2) {
         } else
           setTimeout(function () {
             player1.sendRandomAttack(".container1");
-            mainLoop(player1, player2);
-          }, delayInMilliseconds);
+            setTimeout(function () {
+              mainLoop(player1, player2);
+            }, delayBeforeMainLoop);
+          }, delayBeforeAttack);
       } else return;
     });
 
   function endGame() {
     const displayFunction = player1.gameboard.checkIfLost()
-      ? displayLose
-      : displayWin;
+      ? loserLoop
+      : winnerLoop;
     displayFunction();
   }
+
+  function addHoverEffect() {
+    const viableAttacks = document.querySelectorAll(".container2 .live");
+    viableAttacks.forEach(function (element) {
+      element.classList.toggle("viable-attack");
+    });
+  }
+}
+
+function loserLoop() {
+  displayLose();
+  playLoseSound();
+}
+
+function winnerLoop() {
+  displayWin();
+  playWinSound();
 }

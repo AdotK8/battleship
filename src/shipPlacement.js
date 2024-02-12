@@ -1,5 +1,6 @@
 import { startGameDom } from "./UpdatingDom";
 import playGame from "./game";
+import { playPopSound } from "./sounds";
 
 let direction = 0;
 
@@ -97,6 +98,7 @@ function placeShip(size, shipNumber) {
     }
 
     function handleMouseClick(event) {
+      playPopSound();
       const shipTiles = document.querySelectorAll(".prePlacedShip");
       shipTiles.forEach((tile) => {
         tile.classList.add("placedShip");

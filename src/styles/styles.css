@@ -162,6 +162,10 @@ html {
   background-color: #182436;
 }
 
+.rotate:active {
+  background-color: #7f7f7f;
+}
+
 .sig {
   height: 100%;
   font-size: 60px;
@@ -180,20 +184,14 @@ html {
 .tile {
   border: 3px solid rgba(254, 254, 254, 0.8);
   background: none;
+}
+
+.viable-attack {
   transition: all 1s ease;
 }
 
-.container2 .tile:hover {
+.container2 .viable-attack:hover {
   background-color: rgba(255, 255, 255, 0.4);
-}
-
-@keyframes shimmer {
-  0% {
-    border-color: rgba(255, 255, 255, 0.6);
-  }
-  100% {
-    border-color: rgba(255, 255, 255, 0.8);
-  }
 }
 
 @keyframes rotateY {
@@ -222,7 +220,7 @@ html {
 }
 
 .black:before {
-  background-color: none; /* Front color */
+  background-color: rgba(255, 255, 255, 0.4); /* Front color */
 }
 
 .black:after {
@@ -257,7 +255,7 @@ html {
 }
 
 .hit:before {
-  background-color: none; /* Front color */
+  background-color: rgba(255, 255, 255, 0.4); /* Front color */
   box-shadow: none;
 }
 
@@ -278,7 +276,14 @@ html {
   box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.8);
 }
 
-.prePlacedShip,
 .placedShip {
+  background-color: rgba(0, 255, 0, 0.4);
+}
+
+.prePlacedShip {
+  transition: all 1s ease;
+}
+
+.prePlacedShip {
   background-color: rgba(0, 255, 0, 0.4);
 }

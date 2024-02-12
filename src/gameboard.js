@@ -1,6 +1,7 @@
 import ship from "./ship";
 import { displayHit } from "./UpdatingDom";
 import { displayMiss } from "./UpdatingDom";
+import { playHitSound, playMissSound } from "./sounds";
 
 export default class gameboard {
   constructor() {
@@ -23,6 +24,8 @@ export default class gameboard {
         if (attackCoords.toString() == this.ships[i].coords[j]) {
           this.turns++;
           this.ships[i].hit();
+          playHitSound();
+          console.log("hit");
           displayHit(attackCoords, container);
           if (this.ships[i].isSunk()) {
             console.log("this shit sunk");
@@ -37,6 +40,7 @@ export default class gameboard {
     if (preHits == postHits) {
       this.logMisses(attackCoords);
       this.turns++;
+      playMissSound();
       displayMiss(attackCoords, container);
     } else return;
   }
