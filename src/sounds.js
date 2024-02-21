@@ -4,27 +4,27 @@ import popSound from "./sounds/pop-sound.wav";
 import loseSound from "./sounds/lose-sound.wav";
 import winSound from "./sounds/win-sound.wav";
 
-export function playHitSound() {
-  const myAudio = new Audio(hitSound);
+function playSound(sound) {
+  const myAudio = new Audio(sound);
   myAudio.play();
+}
+
+export function playHitSound() {
+  playSound(hitSound);
 }
 
 export function playMissSound() {
-  const myAudio = new Audio(missSound);
-  myAudio.play();
+  playSound(missSound);
 }
 
 export function playPopSound() {
-  const myAudio = new Audio(popSound);
-  myAudio.play();
+  playSound(popSound);
 }
 
 export function playLoseSound() {
-  const myAudio = new Audio(loseSound);
-  myAudio.play();
+  playSound(loseSound);
 }
 
 export function playWinSound() {
-  const myAudio = new Audio(winSound);
-  myAudio.play();
+  playSound(winSound);
 }
