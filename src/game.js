@@ -81,11 +81,15 @@ function mainLoop(player1, player2) {
 }
 
 function loserLoop() {
-  displayLose();
-  playLoseSound();
+  setTimeout(() => {
+    displayLose();
+    playLoseSound();
+  }, 1500);
 }
 
 function winnerLoop() {
-  displayWin();
-  playWinSound();
+  setTimeout(() => {
+    displayWin();
+    playWinSound();
+  }, 1500);
 }

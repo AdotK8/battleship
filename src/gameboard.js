@@ -25,10 +25,9 @@ export default class gameboard {
           this.turns++;
           this.ships[i].hit();
           playHitSound();
-          console.log("hit");
           displayHit(attackCoords, container);
+
           if (this.ships[i].isSunk()) {
-            console.log("this shit sunk");
             this.sunkenShips++;
             this.checkIfLost();
           }

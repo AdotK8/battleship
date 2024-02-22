@@ -1,15 +1,38 @@
 const text = document.querySelector(".top-text");
 
 export function displayUsersTurn() {
-  text.innerHTML = "attack the enemy";
+  text.innerHTML = "Avast, matey! Ready your cannons!";
 }
 
 export function displayWin() {
-  text.innerHTML = "you won!";
+  text.innerHTML = "Congratulations! You've conquered the seas!";
 }
 
 export function displayLose() {
-  text.innerHTML = "you lost!";
+  text.innerHTML = "Oh no! The kraken got the better of you!";
+}
+
+function displayHitMessage() {
+  text.innerHTML = "Boom! That's how we roll!";
+}
+
+function displayMissMessage() {
+  text.innerHTML = "Oops! Close, but no cigar!";
+}
+
+function displayComputerHitMessage() {
+  text.innerHTML = "Ouch! They got us!";
+}
+
+function displayComputerMissMessage() {
+  text.innerHTML = "Phew! Dodged a cannonball there!";
+}
+
+function resetDisplay() {
+  setTimeout(() => {
+    text.innerHTML = " ";
+    displayUsersTurn();
+  }, 1500);
 }
 
 export function displayBoard(container) {
@@ -44,18 +67,32 @@ export function displayShips(player, container) {
 }
 
 export function displayHit(attackCoords, container) {
-  let tile = document.querySelector(
+  const tile = document.querySelector(
     `${container} [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
   tile.classList.add("hit");
+
+  if (container === ".container2") {
+    displayHitMessage();
+    resetDisplay();
+  } else if (container === ".container1") {
+    displayComputerHitMessage();
+    resetDisplay();
+  }
 }
 
 export function displayMiss(attackCoords, container) {
   let tile = document.querySelector(
     `${container}  [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
-
   tile.classList.add("black");
+  if (container == ".container2") {
+    displayMissMessage();
+    resetDisplay();
+  } else if (container == ".container1") {
+    displayComputerMissMessage();
+    resetDisplay();
+  }
 }
 
 export function startGameDom() {
