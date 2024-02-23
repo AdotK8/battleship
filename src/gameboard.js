@@ -2,6 +2,8 @@ import ship from "./ship";
 import { displayHit } from "./UpdatingDom";
 import { displayMiss } from "./UpdatingDom";
 import { playHitSound, playMissSound } from "./sounds";
+import { removeLatestHitClass } from "./nearestNeighbour";
+import addLatestHitClass from "./nearestNeighbour";
 
 export default class gameboard {
   constructor() {
@@ -22,6 +24,9 @@ export default class gameboard {
     for (let i = 0; i <= this.ships.length - 1; i++) {
       for (let j = 0; j <= this.ships[i].size - 1; j++) {
         if (attackCoords.toString() == this.ships[i].coords[j]) {
+          if (container == ".container1") {
+            addLatestHitClass(attackCoords);
+          }
           this.turns++;
           this.ships[i].hit();
           playHitSound();

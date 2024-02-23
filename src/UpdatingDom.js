@@ -70,6 +70,7 @@ export function displayHit(attackCoords, container) {
   const tile = document.querySelector(
     `${container} [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
+  tile.classList.remove("live");
   tile.classList.add("hit");
 
   if (container === ".container2") {
@@ -85,6 +86,7 @@ export function displayMiss(attackCoords, container) {
   let tile = document.querySelector(
     `${container}  [data-x="${attackCoords[0]}"][data-y="${attackCoords[1]}"]`
   );
+  tile.classList.remove("live");
   tile.classList.add("black");
   if (container == ".container2") {
     displayMissMessage();
