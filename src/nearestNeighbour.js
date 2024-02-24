@@ -1,20 +1,25 @@
-export default function addLatestHitClass(temp) {
+export function addLatestHitClass(attackArray) {
   let latestHitTile = document.querySelector(
-    `.container1 [data-x="${temp[0]}"][data-y="${temp[1]}"]`
+    `.container1 [data-x="${attackArray[0]}"][data-y="${attackArray[1]}"]`
   );
-
-  if (
-    latestHitTile !== null &&
-    latestHitTile.classList.contains("placedShip")
-  ) {
-    latestHitTile.classList.add("latest-hit");
-  }
+  latestHitTile.classList.add("latest-hit");
 }
 
-export function removeLatestHitClass(temp) {
+export function removeLatestHitClass() {
   let latestHitElement = document.querySelector(".latest-hit");
 
   if (latestHitElement !== null) {
     latestHitElement.classList.remove("latest-hit");
+  }
+}
+
+export default function toggleLatestHitClass(attackArray) {
+  let latestHitElement = document.querySelector(".latest-hit");
+
+  if (latestHitElement !== null) {
+    removeLatestHitClass();
+    addLatestHitClass(attackArray);
+  } else {
+    addLatestHitClass(attackArray);
   }
 }
