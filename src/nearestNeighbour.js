@@ -23,3 +23,8 @@ export default function toggleLatestHitClass(attackArray) {
     addLatestHitClass(attackArray);
   }
 }
+
+export function checkNearestNeighbour() {
+  let latestHitElement = document.querySelector(".latest-hit");
+  console.log(latestHitElement.dataset.x);
+}

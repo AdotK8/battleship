@@ -1,4 +1,5 @@
 import gameboard from "./gameboard";
+import { checkNearestNeighbour } from "./nearestNeighbour";
 
 export default class player {
   constructor(name) {
@@ -18,12 +19,19 @@ export default class player {
       } else;
     }
 
-    if (isValid == false) {
+    if (isValid === false) {
       this.sendRandomAttack(container);
     } else {
-      this.gameboard.recieveAttack(temp, container);
+      // Check for the existence of an element with the class 'latest-hit'
+      let latestHitElement = document.querySelector(".latest-hit");
 
-      return;
+      if (latestHitElement !== null) {
+        checkNearestNeighbour();
+        return;
+      } else {
+        this.gameboard.recieveAttack(temp, container);
+        return;
+      }
     }
   }
 
