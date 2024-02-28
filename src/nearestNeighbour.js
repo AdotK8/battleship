@@ -26,5 +26,9 @@ export default function toggleLatestHitClass(attackArray) {
 
 export function checkNearestNeighbour() {
   let latestHitElement = document.querySelector(".latest-hit");
-  console.log(latestHitElement.dataset.x);
+  let latestHitArray = [
+    Number(latestHitElement.dataset.x),
+    Number(latestHitElement.dataset.y),
+  ];
+  console.log(latestHitArray);
 }
