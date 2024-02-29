@@ -58,9 +58,15 @@ function mainLoop(player1, player2) {
         } else
           setTimeout(function () {
             player1.sendRandomAttack(".container1");
-            setTimeout(function () {
-              mainLoop(player1, player2);
-            }, delayBeforeMainLoop);
+            if (
+              player1.gameboard.checkIfLost() ||
+              player2.gameboard.checkIfLost()
+            ) {
+              endGame();
+            } else
+              setTimeout(function () {
+                mainLoop(player1, player2);
+              }, delayBeforeMainLoop);
           }, delayBeforeAttack);
       } else return;
     });

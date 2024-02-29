@@ -1,4 +1,7 @@
-export function addLatestHitClass(attackArray) {
+import gameboard from "./gameboard";
+import player from "./player";
+
+export function addLatestHitClass(attackArray, container, player) {
   let latestHitTile = document.querySelector(
     `.container1 [data-x="${attackArray[0]}"][data-y="${attackArray[1]}"]`
   );
@@ -24,7 +27,7 @@ export default function toggleLatestHitClass(attackArray) {
   }
 }
 
-export function checkNearestNeighbour() {
+export function checkNearestNeighbour(randomAttackArray, container, player) {
   let latestHitElement = document.querySelector(".latest-hit");
   let latestHitArray = [
     Number(latestHitElement.dataset.x),
@@ -35,9 +38,15 @@ export function checkNearestNeighbour() {
   let liveHits = checkForLiveHits(adjacentPositions);
 
   if (liveHits.length > 0) {
-    console.log("Live hits:", liveHits);
+    let randomIndex = Math.floor(Math.random() * liveHits.length);
+
+    // Get the random position from liveHits array
+    let randomPosition = liveHits[randomIndex];
+
+    // Call receiveAttack on the random position
+    player.gameboard.recieveAttack(randomPosition, container);
   } else {
-    console.log("No hits");
+    player.gameboard.recieveAttack(randomAttackArray, container);
   }
 }
 
@@ -76,7 +85,6 @@ function checkForLiveHits(adjacentPositions) {
     let x = position[0];
     let y = position[1];
 
-    // Find the corresponding element in the HTML
     let element = document.querySelector(
       `.container1 [data-x="${x}"][data-y="${y}"]`
     );

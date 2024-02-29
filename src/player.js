@@ -26,10 +26,11 @@ export default class player {
       let latestHitElement = document.querySelector(".latest-hit");
 
       if (latestHitElement !== null) {
-        checkNearestNeighbour();
+        checkNearestNeighbour(temp, container, this);
         return;
       } else {
         this.gameboard.recieveAttack(temp, container);
+        console.log(this);
         return;
       }
     }
