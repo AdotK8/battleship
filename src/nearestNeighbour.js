@@ -1,7 +1,7 @@
 import gameboard from "./gameboard";
 import player from "./player";
 
-export function addLatestHitClass(attackArray, container, player) {
+export function addLatestHitClass(attackArray) {
   let latestHitTile = document.querySelector(
     `.container1 [data-x="${attackArray[0]}"][data-y="${attackArray[1]}"]`
   );
@@ -45,8 +45,115 @@ export function checkNearestNeighbour(randomAttackArray, container, player) {
 
     // Call receiveAttack on the random position
     player.gameboard.recieveAttack(randomPosition, container);
+    console.log(player);
   } else {
+    checksUnsunkShipsForHits(randomAttackArray, container, player);
+  }
+}
+
+function checksUnsunkShipsForHits(randomAttackArray, container, player) {
+  let shipsState = player.gameboard.ships;
+  let shipFound = false;
+
+  for (let ship of shipsState) {
+    // Check if the ship has not been sunk and has 2 or more hits
+    if (ship.hits >= 2 && ship.hits < ship.size) {
+      shipFound = true;
+      let shipHitsArray = getArray(ship);
+      let adjacentArray = getAdjacentCoordinates(shipHitsArray);
+      attackEndOfShip(adjacentArray, container, player);
+      break; // Exit the loop and the function
+    }
+  }
+  // If no ship meets the criteria, proceed with attack
+  if (!shipFound) {
     player.gameboard.recieveAttack(randomAttackArray, container);
+  }
+}
+
+function getArray(ship) {
+  let hitShipArray = [];
+  for (let i = 0; i < ship.size; i++) {
+    let x = ship.coords[i][0];
+    let y = ship.coords[i][1];
+
+    let element = document.querySelector(
+      `.container1 [data-x="${x}"][data-y="${y}"]`
+    );
+
+    if (!element.classList.contains("live")) {
+      hitShipArray.push([x, y]);
+    }
+  }
+  return hitShipArray;
+}
+
+function getAdjacentCoordinates(coordinatesArray) {
+  let adjacentCoordinates = [];
+
+  // Assuming coordinatesArray contains at least one coordinate pair
+  let firstCoordinate = coordinatesArray[0];
+  let lastCoordinate = coordinatesArray[coordinatesArray.length - 1];
+
+  // Define the bounds of the board
+  const boardSize = 8;
+  const minX = 1;
+  const minY = 1;
+  const maxX = boardSize;
+  const maxY = boardSize;
+
+  // Check if the coordinates are arranged horizontally or vertically
+  if (firstCoordinate[0] === lastCoordinate[0]) {
+    // Horizontal arrangement
+    let x = firstCoordinate[0];
+    let startY = Math.max(
+      minY,
+      Math.min(firstCoordinate[1], lastCoordinate[1]) - 1
+    );
+    let endY = Math.min(
+      maxY,
+      Math.max(firstCoordinate[1], lastCoordinate[1]) + 1
+    );
+
+    for (let y = startY; y <= endY; y++) {
+      if (!coordinatesArray.some((coord) => coord[1] === y)) {
+        adjacentCoordinates.push([x, y]);
+      }
+    }
+  } else if (firstCoordinate[1] === lastCoordinate[1]) {
+    // Vertical arrangement
+    let y = firstCoordinate[1];
+    let startX = Math.max(
+      minX,
+      Math.min(firstCoordinate[0], lastCoordinate[0]) - 1
+    );
+    let endX = Math.min(
+      maxX,
+      Math.max(firstCoordinate[0], lastCoordinate[0]) + 1
+    );
+
+    for (let x = startX; x <= endX; x++) {
+      if (!coordinatesArray.some((coord) => coord[0] === x)) {
+        adjacentCoordinates.push([x, y]);
+      }
+    }
+  }
+
+  return adjacentCoordinates;
+}
+
+function attackEndOfShip(adjacentArray, container, player) {
+  for (let i = 0; i < adjacentArray.length; i++) {
+    let x = adjacentArray[i][0];
+    let y = adjacentArray[i][1];
+
+    let element = document.querySelector(
+      `.container1 [data-x="${x}"][data-y="${y}"]`
+    );
+
+    if (element.classList.contains("live")) {
+      player.gameboard.recieveAttack([x, y], container);
+    }
   }
 }
 
