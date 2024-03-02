@@ -98,14 +98,18 @@ function placeShip(size, shipNumber) {
     }
 
     function handleMouseClick(event) {
-      playPopSound();
-      const shipTiles = document.querySelectorAll(".prePlacedShip");
-      shipTiles.forEach((tile) => {
-        tile.classList.add("placedShip");
-        tile.classList.add(shipNumber);
-      });
-      removeEventListeners();
-      resolve();
+      const tile = event.target;
+      if (tile.classList.contains("placedShip")) {
+      } else {
+        playPopSound();
+        const shipTiles = document.querySelectorAll(".prePlacedShip");
+        shipTiles.forEach((tile) => {
+          tile.classList.add("placedShip");
+          tile.classList.add(shipNumber);
+        });
+        removeEventListeners();
+        resolve();
+      }
     }
   });
 }
