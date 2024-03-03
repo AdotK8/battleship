@@ -1,6 +1,3 @@
-import gameboard from "./gameboard";
-import player from "./player";
-
 export function addLatestHitClass(attackArray) {
   let latestHitTile = document.querySelector(
     `.container1 [data-x="${attackArray[0]}"][data-y="${attackArray[1]}"]`
@@ -56,16 +53,15 @@ function checksUnsunkShipsForHits(randomAttackArray, container, player) {
   let shipFound = false;
 
   for (let ship of shipsState) {
-    // Check if the ship has not been sunk and has 2 or more hits
-    if (ship.hits >= 2 && ship.hits < ship.size) {
+    if (ship.hits >= 1 && ship.hits < ship.size) {
       shipFound = true;
       let shipHitsArray = getArray(ship);
       let adjacentArray = getAdjacentCoordinates(shipHitsArray);
       attackEndOfShip(adjacentArray, container, player);
-      break; // Exit the loop and the function
+      break;
     }
   }
-  // If no ship meets the criteria, proceed with attack
+
   if (!shipFound) {
     player.gameboard.recieveAttack(randomAttackArray, container);
   }
@@ -91,20 +87,16 @@ function getArray(ship) {
 function getAdjacentCoordinates(coordinatesArray) {
   let adjacentCoordinates = [];
 
-  // Assuming coordinatesArray contains at least one coordinate pair
   let firstCoordinate = coordinatesArray[0];
   let lastCoordinate = coordinatesArray[coordinatesArray.length - 1];
 
-  // Define the bounds of the board
   const boardSize = 8;
   const minX = 1;
   const minY = 1;
   const maxX = boardSize;
   const maxY = boardSize;
 
-  // Check if the coordinates are arranged horizontally or vertically
   if (firstCoordinate[0] === lastCoordinate[0]) {
-    // Horizontal arrangement
     let x = firstCoordinate[0];
     let startY = Math.max(
       minY,
@@ -121,7 +113,6 @@ function getAdjacentCoordinates(coordinatesArray) {
       }
     }
   } else if (firstCoordinate[1] === lastCoordinate[1]) {
-    // Vertical arrangement
     let y = firstCoordinate[1];
     let startX = Math.max(
       minX,
@@ -157,12 +148,10 @@ function attackEndOfShip(adjacentArray, container, player) {
   }
 }
 
-//checks if elelemnt is within board constraints
 function isValidPosition(x, y) {
   return x >= 1 && x <= 8 && y >= 1 && y <= 8;
 }
 
-//functions which takes in array, and returns all adjacent elements of the array
 function findAdjacentPositions(latestHitArray) {
   let adjacentPositions = [];
   let directions = [
@@ -184,7 +173,6 @@ function findAdjacentPositions(latestHitArray) {
   return adjacentPositions;
 }
 
-// Function to check for live hits among adjacent positions
 function checkForLiveHits(adjacentPositions) {
   let liveHits = [];
 

@@ -22,7 +22,6 @@ export default class player {
     if (isValid === false) {
       this.sendRandomAttack(container);
     } else {
-      // Check for the existence of an element with the class 'latest-hit'
       let latestHitElement = document.querySelector(".latest-hit");
 
       if (latestHitElement !== null) {

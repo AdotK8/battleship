@@ -35,6 +35,7 @@ function mainLoop(player1, player2) {
 
   let delayBeforeMainLoop = 1500;
   let delayBeforeAttack = 1500;
+
   addHoverEffect();
   if (player1.gameboard.checkIfLost() || player2.gameboard.checkIfLost()) {
     endGame();

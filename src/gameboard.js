@@ -6,11 +6,9 @@ import toggleLatestHitClass from "./nearestNeighbour";
 
 export default class gameboard {
   constructor() {
-    this.misses = {};
     this.attacks = {};
     this.ships = [];
     this.sunkenShips = 0;
-    this.turns = 0;
   }
   createShip(size, coords) {
     this.ships.push(new ship(size, coords));
@@ -26,7 +24,6 @@ export default class gameboard {
           if (container == ".container1") {
             toggleLatestHitClass(attackCoords);
           }
-          this.turns++;
           this.ships[i].hit();
           playHitSound();
           displayHit(attackCoords, container);
@@ -41,8 +38,6 @@ export default class gameboard {
     let postHits = this.getTotalHits();
 
     if (preHits == postHits) {
-      this.logMisses(attackCoords);
-      this.turns++;
       playMissSound();
       displayMiss(attackCoords, container);
     } else return;
@@ -54,15 +49,6 @@ export default class gameboard {
       tempHits = tempHits + this.ships[i].hits;
     }
     return tempHits;
-  }
-
-  logMisses(attackCoords) {
-    for (let i = 0; i < 64; i++) {
-      if (!this.misses[i]) {
-        this.misses[i] = attackCoords;
-        return;
-      }
-    }
   }
 
   logAttacks(attackCoords) {

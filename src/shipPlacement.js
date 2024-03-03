@@ -36,7 +36,7 @@ export async function placeShips() {
 function placeShip(size, shipNumber) {
   const tiles = document.querySelectorAll(".tile");
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     tiles.forEach((tile) => {
       tile.addEventListener("mouseenter", handleMouseEnter);
       tile.addEventListener("mouseleave", handleMouseLeave);
