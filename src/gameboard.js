@@ -6,19 +6,23 @@ import toggleLatestHitClass from "./nearestNeighbour";
 
 export default class gameboard {
   constructor() {
+    // Initialize properties to track attacks, ships, and sunken ships
     this.attacks = {};
     this.ships = [];
     this.sunkenShips = 0;
   }
+  // Method to create a new ship with specified size and coordinates
   createShip(size, coords) {
     this.ships.push(new ship(size, coords));
   }
-
+  // Method to handle receiving an attack at specified coordinates and container
   recieveAttack(attackCoords, container) {
     this.logAttacks(attackCoords);
     let preHits = this.getTotalHits();
 
+    // Iterate over each ship to check if it's hit
     for (let i = 0; i <= this.ships.length - 1; i++) {
+      // Iterate over each coordinate of the current ship
       for (let j = 0; j <= this.ships[i].size - 1; j++) {
         if (attackCoords.toString() == this.ships[i].coords[j]) {
           if (container == ".container1") {
@@ -42,7 +46,7 @@ export default class gameboard {
       displayMiss(attackCoords, container);
     } else return;
   }
-
+  // Method to calculate the total hits on all ships
   getTotalHits() {
     let tempHits = 0;
     for (let i = 0; i < this.ships.length; i++) {
@@ -50,7 +54,7 @@ export default class gameboard {
     }
     return tempHits;
   }
-
+  // Method to log attacks in the attacks object
   logAttacks(attackCoords) {
     for (let i = 0; i < 64; i++) {
       if (!this.attacks[i]) {
@@ -59,7 +63,7 @@ export default class gameboard {
       }
     }
   }
-
+  // Method to check if the player lost the game by sinking all ships
   checkIfLost() {
     return this.sunkenShips === this.ships.length;
   }
