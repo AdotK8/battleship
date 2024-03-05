@@ -10,7 +10,7 @@ jest.mock("./sounds", () => ({
 
 import player from "./player";
 
-describe("Suite 1 (Gameboard Suite)", () => {
+describe("suite 1 (gameboard Suite)", () => {
   let player1 = new player("player");
 
   let playerShip1 = {
@@ -64,7 +64,7 @@ describe("Suite 1 (Gameboard Suite)", () => {
 
 import { generateShips } from "./generateShips";
 
-describe("Suite 2 (Generate Ships Suite)", () => {
+describe("suite 2 (senerate ships suite)", () => {
   describe("generateShips function", () => {
     test("it should generate ships with correct sizes and coordinates", () => {
       const ships = generateShips();
@@ -95,5 +95,55 @@ describe("Suite 2 (Generate Ships Suite)", () => {
         }
       }
     });
+  });
+});
+
+import { getAdjacentCoordinates } from "./nearestNeighbour";
+
+describe("suite 3 (get adjacent coordinates suite)", () => {
+  test("should return adjacent coordinates when the coordinatesArray represents a horizontal line", () => {
+    const coordinatesArray = [
+      [3, 3],
+      [3, 4],
+      [3, 5],
+    ];
+    const expectedAdjacentCoordinates = [
+      [3, 2],
+      [3, 6],
+    ];
+
+    expect(getAdjacentCoordinates(coordinatesArray)).toEqual(
+      expectedAdjacentCoordinates
+    );
+  });
+
+  test("should return adjacent coordinates when the coordinatesArray represents a vertical line", () => {
+    const coordinatesArray = [
+      [3, 3],
+      [4, 3],
+      [5, 3],
+    ];
+    const expectedAdjacentCoordinates = [
+      [2, 3],
+      [6, 3],
+    ];
+
+    expect(getAdjacentCoordinates(coordinatesArray)).toEqual(
+      expectedAdjacentCoordinates
+    );
+  });
+
+  test("should return adjacent coordinates when the coordinatesArray represents a single point", () => {
+    const coordinatesArray = [[3, 3]];
+    const expectedAdjacentCoordinates = [
+      [2, 3],
+      [4, 3],
+      [3, 2],
+      [3, 4],
+    ];
+
+    expect(getAdjacentCoordinates(coordinatesArray)).toEqual(
+      expectedAdjacentCoordinates
+    );
   });
 });
