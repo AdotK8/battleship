@@ -53,7 +53,7 @@ export function checkNearestNeighbour(randomAttackArray, container, player) {
   }
 }
 
-// Other helper functions follow...
+//helper functions follow...
 
 function checksUnsunkShipsForHits(randomAttackArray, container, player) {
   let shipsState = player.gameboard.ships;
@@ -91,9 +91,10 @@ function getArray(ship) {
   return hitShipArray;
 }
 
+//function which takes coordinateArray as input, and returns array of adjacent coordinates
 export function getAdjacentCoordinates(coordinatesArray) {
   let adjacentCoordinates = [];
-
+  //checks if single coordinate is passed into function
   if (coordinatesArray.length === 1) {
     let [x, y] = coordinatesArray[0];
 
@@ -117,6 +118,7 @@ export function getAdjacentCoordinates(coordinatesArray) {
     const maxX = 8;
     const maxY = 8;
 
+    //horizontal case
     if (firstCoordinate[0] === lastCoordinate[0]) {
       let x = firstCoordinate[0];
       let startY = Math.max(
@@ -133,6 +135,7 @@ export function getAdjacentCoordinates(coordinatesArray) {
           adjacentCoordinates.push([x, y]);
         }
       }
+      //vertical case
     } else if (firstCoordinate[1] === lastCoordinate[1]) {
       let y = firstCoordinate[1];
       let startX = Math.max(
@@ -154,7 +157,7 @@ export function getAdjacentCoordinates(coordinatesArray) {
 
   return adjacentCoordinates;
 }
-
+//function which hits the first elemtn in the adjacent arrray, which has live class
 function attackEndOfShip(adjacentArray, container, player) {
   for (let i = 0; i < adjacentArray.length; i++) {
     let x = adjacentArray[i][0];
@@ -169,11 +172,11 @@ function attackEndOfShip(adjacentArray, container, player) {
     }
   }
 }
-
+//checks if point is within gameboard boundaries
 function isValidPosition(x, y) {
   return x >= 1 && x <= 8 && y >= 1 && y <= 8;
 }
-
+//takes in single point and returns adjacent coordinates
 function findAdjacentPositions(latestHitArray) {
   let adjacentPositions = [];
   let directions = [
@@ -195,6 +198,7 @@ function findAdjacentPositions(latestHitArray) {
   return adjacentPositions;
 }
 
+//takes in array, and checks if each corresponding coordinate has is a viable hit
 function checkForLiveHits(adjacentPositions) {
   let liveHits = [];
 
