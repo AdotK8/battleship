@@ -62,6 +62,8 @@ html {
 }
 
 .top {
+  display: flex;
+  flex-direction: column;
   font-family: "Black Ops One", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -71,6 +73,7 @@ html {
   height: 15%;
   color: rgba(255, 255, 255, 0.6);
   padding-top: 4rem;
+  justify-content: center;
 }
 
 .middle {
@@ -175,6 +178,9 @@ html {
 
 .rotate:active {
   background-color: #7f7f7f;
+}
+
+.top #start {
 }
 
 .sig {

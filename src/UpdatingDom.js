@@ -122,3 +122,18 @@ export function startGameDom() {
     displayBoard(enemyContainer);
   }, 1000);
 }
+
+export function startNewGameDom() {
+  console.log("test");
+  const container = document.querySelector(".top");
+  const startGameButton = document.createElement("div");
+  startGameButton.classList.add("start");
+  startGameButton.classList.add("play-again");
+  startGameButton.id = "start";
+  startGameButton.innerHTML = "PLAY AGAIN";
+  container.appendChild(startGameButton);
+
+  startGameButton.addEventListener("click", () => {
+    window.location.reload();
+  });
+}

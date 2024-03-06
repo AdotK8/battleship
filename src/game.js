@@ -1,7 +1,7 @@
 import player from "./player";
 import { displayShips } from "./UpdatingDom";
 import { generateShips } from "./generateShips";
-import { displayLose, displayWin } from "./UpdatingDom";
+import { displayLose, displayWin, startNewGameDom } from "./UpdatingDom";
 import { playLoseSound, playWinSound } from "./sounds";
 
 export default function playGame(
@@ -82,12 +82,27 @@ function mainLoop(player1, player2) {
       } else return;
     });
   // Function to handle end game scenarios
+  // function endGame() {
+  //   const displayFunction = player1.gameboard.checkIfLost()
+  //     ? loserLoop
+  //     : winnerLoop;
+  //   displayFunction();
+  // }
+
   function endGame() {
     const displayFunction = player1.gameboard.checkIfLost()
       ? loserLoop
       : winnerLoop;
     displayFunction();
+
+    // Delay execution of startNewGameDom after 1 second (1000 milliseconds)
+    setTimeout(playAgain, 3000);
   }
+
+  function playAgain() {
+    startNewGameDom();
+  }
+
   // Function to toggle hover effect on live cells
   function addHoverEffect() {
     const viableAttacks = document.querySelectorAll(".container2 .live");

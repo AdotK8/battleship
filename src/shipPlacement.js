@@ -11,7 +11,6 @@ export function rotateShip() {
   rotate.addEventListener("click", () => {
     if (direction == 0) {
       direction = 1;
-      console.log(direction);
     } else if (direction == 1) {
       direction = 0;
     }

@@ -46,7 +46,6 @@ export function checkNearestNeighbour(randomAttackArray, container, player) {
     let randomIndex = Math.floor(Math.random() * liveHits.length);
     let randomPosition = liveHits[randomIndex];
     player.gameboard.recieveAttack(randomPosition, container);
-    console.log(player);
   } else {
     // If no live hits are available, check for unsunk ships for hits
     checksUnsunkShipsForHits(randomAttackArray, container, player);
