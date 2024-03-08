@@ -166,11 +166,13 @@ function attackEndOfShip(adjacentArray, container, player) {
       `.container1 [data-x="${x}"][data-y="${y}"]`
     );
 
-    if (element.classList.contains("live")) {
+    if (element && element.classList.contains("live")) {
       player.gameboard.recieveAttack([x, y], container);
+      break; // Exit the loop once the element is found
     }
   }
 }
+
 //checks if point is within gameboard boundaries
 function isValidPosition(x, y) {
   return x >= 1 && x <= 8 && y >= 1 && y <= 8;

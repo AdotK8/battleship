@@ -12,7 +12,7 @@ html {
     #196569,
     #1e2384
   );
-  background-size: 400% 400%;
+  background-size: 200% 200%;
   animation: gradient 15s ease infinite;
   overflow: hidden;
 }
@@ -56,7 +56,7 @@ html {
 
 .main {
   display: flex;
-  gap: 100px;
+  gap: 50px;
   align-items: center;
   flex-direction: column;
 }
@@ -67,19 +67,19 @@ html {
   font-family: "Black Ops One", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 5rem;
+  font-size: 2.5rem;
   align-items: center;
   margin: 0;
   height: 15%;
   color: rgba(255, 255, 255, 0.6);
-  padding-top: 4rem;
+  padding-top: 2rem;
   justify-content: center;
 }
 
 .middle {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  gap: 50px;
 }
 
 .footer {
@@ -89,19 +89,19 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  background-color: rgba(0, 0, 0, 0.2); /* Optional: Add background color */
-  color: white; /* Optional: Set text color */
+  gap: 2.5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
 .title {
   font-family: "Black Ops One", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 12rem;
+  font-size: 6rem;
   align-items: center;
   margin: 0;
-  padding-top: 3rem;
+  padding-top: 1.5rem;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -115,14 +115,14 @@ html {
 
 .container1,
 .container2 {
-  min-height: 700px;
-  min-width: 700px;
+  min-height: 350px;
+  min-width: 350px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  gap: 10px;
+  gap: 5px;
   position: relative;
-  perspective: 800px;
+  perspective: 400px;
 }
 
 .container2 {
@@ -142,7 +142,7 @@ html {
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   justify-content: center;
   opacity: 1;
   transform: translateX(0);
@@ -151,22 +151,22 @@ html {
 
 .buttons.fade-out {
   opacity: 0;
-  transform: translateX(200px);
+  transform: translateX(100px);
 }
 
 .start,
 .rotate {
-  font-size: 35px;
+  font-size: 18px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.6);
   font-family: "Open Sans", sans-serif;
   text-align: center;
   border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
+  border-radius: 4px;
+  padding: 6px 6px;
   background-color: #243959;
   width: 60%;
-  max-width: 300px;
+  max-width: 150px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -180,12 +180,8 @@ html {
   background-color: #7f7f7f;
 }
 
-.top #start {
-}
-
 .sig {
-  /* height: 100%; */
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 100;
   color: rgba(255, 255, 255, 0.6);
   font-family: "Open Sans", sans-serif;
@@ -195,11 +191,11 @@ html {
 
 #git {
   height: 100%;
-  width: 80px;
+  width: 40px;
 }
 
 .tile {
-  border: 3px solid rgba(254, 254, 254, 0.8);
+  border: 1.5px solid rgba(254, 254, 254, 0.8);
   background: none;
 }
 
@@ -221,7 +217,7 @@ html {
 }
 
 .black {
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px 2.5px rgba(0, 0, 0, 0.4);
   position: relative;
   transform-style: preserve-3d;
   animation: rotateY 1s linear forwards;
@@ -243,7 +239,7 @@ html {
 .black:after {
   background-color: #000000; /* Back color */
   transform: rotateY(180deg);
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 5px 2.5px rgba(0, 0, 0, 0.8);
 }
 
 .hit,
@@ -278,19 +274,19 @@ html {
 
 .hit.placedShip:before {
   background-color: rgba(0, 255, 0, 0.4); /* Front color */
-  box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.8);
+  box-shadow: 0 0 5px 2.5px rgba(0, 255, 0, 0.8);
 }
 
 .hit:after {
   background-color: rgb(252, 0, 0); /* Back color */
   transform: rotateY(180deg);
-  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.8);
+  box-shadow: 0 0 5px 2.5px rgba(252, 0, 0, 0.8);
 }
 
 .hit.placedShip:after {
   background-color: rgb(252, 0, 0); /* Back color */
   transform: rotateY(180deg);
-  box-shadow: 0 0 10px 5px rgba(252, 0, 0, 0.8);
+  box-shadow: 0 0 5px 2.5px rgba(252, 0, 0, 0.8);
 }
 
 .placedShip {
@@ -299,8 +295,5 @@ html {
 
 .prePlacedShip {
   transition: all 1s ease;
-}
-
-.prePlacedShip {
-  background-color: rgba(0, 255, 0, 0.4);
+  background-color: xw rgba(0, 255, 0, 0.4);
 }
