@@ -295,5 +295,5 @@ html {
 
 .prePlacedShip {
   transition: all 1s ease;
-  background-color: xw rgba(0, 255, 0, 0.4);
+  background-color: rgba(0, 255, 0, 0.4);
 }
