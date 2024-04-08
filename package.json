@@ -1,5 +1,5 @@
 {
-  "name": "Battleship-App",
+  "name": "battleship",
   "version": "1.0.0",
   "description": "A simple wether app made to get familiar with the use of API integration",
   "main": "index.js",
