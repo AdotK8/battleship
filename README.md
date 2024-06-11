@@ -6,7 +6,7 @@
 
 ## [Live Preview](https://adotk8.github.io/battleship/)
 
-![Alt text](https://github.com/AdotK8/cv-application/blob/main/src/images/readme-image.png)
+![Alt text](https://github.com/AdotK8/battleship/blob/main/src/images/readme-image.png)
 
 <h2>💻 Built with</h2>
 
