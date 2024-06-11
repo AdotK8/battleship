@@ -10,10 +10,9 @@ export default function playGame(
   shipCoords3,
   shipCoords4
 ) {
-  // Create two players: player1 and player2
   let player1 = new player("player");
   let player2 = new player("computer");
-  // Generate 4 random ships for computer (player2)
+
   const randomShips = generateShips();
 
   // Create ships for player1 and player2
@@ -32,7 +31,7 @@ export default function playGame(
   // Start the main game loop
   mainLoop(player1, player2);
 }
-// Main game loop to manage player turns and game events
+
 function mainLoop(player1, player2) {
   const container = document.querySelector(".container2");
   // Define delay times for animations and transitions
@@ -67,7 +66,7 @@ function mainLoop(player1, player2) {
           setTimeout(function () {
             // Proceed with the computer's random attack
             player1.sendRandomAttack(".container1");
-            // Check if the game is over after the computer's attack
+            // Check if the game is over after te computer's attack
             if (
               player1.gameboard.checkIfLost() ||
               player2.gameboard.checkIfLost()
@@ -81,14 +80,8 @@ function mainLoop(player1, player2) {
           }, delayBeforeAttack);
       } else return;
     });
-  // Function to handle end game scenarios
-  // function endGame() {
-  //   const displayFunction = player1.gameboard.checkIfLost()
-  //     ? loserLoop
-  //     : winnerLoop;
-  //   displayFunction();
-  // }
 
+  // Function to handle end game scenarios
   function endGame() {
     const displayFunction = player1.gameboard.checkIfLost()
       ? loserLoop
@@ -111,6 +104,7 @@ function mainLoop(player1, player2) {
     });
   }
 }
+
 // Function to handle the end game scenario where the player loses
 function loserLoop() {
   setTimeout(() => {
@@ -118,6 +112,7 @@ function loserLoop() {
     playLoseSound();
   }, 1500);
 }
+
 // Function to handle the end game scenario where the player wins
 function winnerLoop() {
   setTimeout(() => {

@@ -156,7 +156,7 @@ export function getAdjacentCoordinates(coordinatesArray) {
 
   return adjacentCoordinates;
 }
-//function which hits the first elemtn in the adjacent arrray, which has live class
+//function which hits the first element in the adjacent arrray, which has live class
 function attackEndOfShip(adjacentArray, container, player) {
   for (let i = 0; i < adjacentArray.length; i++) {
     let x = adjacentArray[i][0];
